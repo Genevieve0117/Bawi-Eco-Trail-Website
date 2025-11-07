@@ -1,0 +1,22 @@
+{
+  "name": "bawi-eco-trail-website",
+  "version": "1.0.0",
+  "description": "A modern website showcasing the Bawi Eco Trail attraction in Batangas, including visitor information and amenities.",
+  "main": "src/js/main.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step not defined yet.'"
+  },
+  "keywords": [
+    "Bawi",
+    "Eco Trail",
+    "Batangas",
+    "Tourism",
+    "Website"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
