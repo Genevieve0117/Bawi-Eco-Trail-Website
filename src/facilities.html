@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities - Bawi Eco Trail</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> 
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body style="background: url('../Seal/Facilities_AI_bg.jpg') no-repeat center center fixed; background-size: 100vw 100vh; margin:0; min-height:100vh;">
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="../Seal/Barangay_Bawi_Seal.png" alt="Barangay Bawi Seal" style="height:56px;width:auto;vertical-align:middle;margin-right:16px;">
+            <span style="font-size:2rem;font-weight:bold;color:#ffffff;">Barangay Bawi</span>
+        </div>
+        <nav class="navbar">
+            <a href="easter.html" id="navbar__logo">Bawi Eco Trail</a>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a class="navbar__links" href="home.html">Home</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="attraction.html">Attraction</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="facilities.html">Facilities</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="visitor-info.html">Visitor Info</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="centered-content">
+            <section>
+                <div class="text-container">
+                    <h2>Available Facilities</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>
+                            <strong>Entrance & Exit</strong> A proper entrance and exit, with a bulliten map and a QR for the website.
+                            <br>
+                            <img src="../Seal/Visitors Info - add image on container.png" alt="Store Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
+                        </li>
+                        <li>
+                            <strong>Restrooms</strong> Clean and accessible restrooms are available throughout the trail.
+                            <br>
+                            <img
+                                src="../Seal/Restroom 1.png"
+                                alt="Restroom Placeholder"
+                                id="restroom-img"
+                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
+                                onclick="cycleRestroomImage()"
+                            >
+                        </li>
+                        <li>
+                            <strong>Shower Area</strong> Used to cleanse before using the pools.
+                            <br>
+                            <img
+                                src="../Seal/Shower 1.png"
+                                alt="Shower Area Placeholder"
+                                id="shower-img"
+                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
+                                onclick="cycleShowerImage()"
+                            >
+                        </li>
+                        <li>
+                            <strong>Lodging</strong> Designated resting and eating areas with tables and benches for visitors to enjoy.
+                            <br>
+                            <img
+                                src="../Seal/Lodging 1 Large.png"
+                                alt="Lodging Placeholder"
+                                id="lodging-img"
+                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
+                                onclick="cycleLodgingImage()"
+                            >
+                        </li>
+                        <li>
+                            <strong>Parking</strong> There is no designated parking, but locals advised that the bridge could be a Parking Area.
+                            <br>
+                            <img
+                                src="../Seal/Parking 1.png"
+                                alt="Parking Placeholder"
+                                id="parking-img"
+                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
+                                onclick="cycleParkingImage()"
+                            >
+                        </li>
+                        <li>
+                            <strong>Small Store</strong> Provides essential goods and refreshments to visitors.
+                            <br>
+                            <img src="../Seal/Small Store.png" alt="Store Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
+                        </li>
+                        <li>
+                            <strong>Patio</strong> A relaxing outdoor space for dining, lounging, and enjoying scenic resort views.
+                            <br>
+                            <img src="../Seal/Patio Set.png" alt="Patio Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
+                        </li>
+                        <li>
+                            <strong>Pools</strong> A heart shaped swimming pool next to the beautiful river, with a larger rectangle pool.
+                            <br>
+                            <img
+                                src="../Seal/Heart Pool.png"
+                                alt="Swimming Pool Placeholder"
+                                id="swimming-pool-img"
+                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
+                                onclick="cyclePoolImage()"
+                            >
+                        </li>
+                        <br>
+                        <li style="text-align: center;">
+                            <strong>Overall</strong>
+                            <br>
+                            <img
+                                src="../Seal/Map.png"
+                                alt="Map"
+                                id="overall-map-img"
+                                style="margin:10px auto; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
+                                onclick="showMapModal()"
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div id="map-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+        <img id="modal-map-img" src="../Seal/Map.png" alt="Map Enlarged" style="max-width:90vw;max-height:90vh;border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.25);background:#fff;">
+    </div>
+    <script>
+function showMapModal() {
+    document.getElementById('map-modal').style.display = 'flex';
+}
+document.getElementById('map-modal').onclick = function() {
+    this.style.display = 'none';
+};
+
+// Pool image cycling
+const poolImages = [
+    "../Seal/Heart Pool.png",
+    "../Seal/Rectangle Pool.png"
+];
+let poolIndex = 0;
+function cyclePoolImage() {
+    poolIndex = (poolIndex + 1) % poolImages.length;
+    document.getElementById('swimming-pool-img').src = poolImages[poolIndex];
+}
+
+// Restroom image cycling
+const restroomImages = [
+    "../Seal/Restroom 1.png",
+    "../Seal/Restroom 2.png",
+    "../Seal/Restroom outside.png"
+];
+let restroomIndex = 0;
+function cycleRestroomImage() {
+    restroomIndex = (restroomIndex + 1) % restroomImages.length;
+    document.getElementById('restroom-img').src = restroomImages[restroomIndex];
+}
+
+// Lodging image cycling
+const lodgingImages = [
+    "../Seal/Lodging 1 Large.png",
+    "../Seal/Lodging 2 Small.png"
+];
+let lodgingIndex = 0;
+function cycleLodgingImage() {
+    lodgingIndex = (lodgingIndex + 1) % lodgingImages.length;
+    document.getElementById('lodging-img').src = lodgingImages[lodgingIndex];
+}
+
+// Shower image cycling
+const showerImages = [
+    "../Seal/Shower 1.png",
+    "../Seal/Shower 2.png"
+];
+let showerIndex = 0;
+function cycleShowerImage() {
+    showerIndex = (showerIndex + 1) % showerImages.length;
+    document.getElementById('shower-img').src = showerImages[showerIndex];
+}
+
+// Parking image cycling
+const parkingImages = [
+    "../Seal/Parking 1.png",
+    "../Seal/Parking 2.png"
+];
+let parkingIndex = 0;
+function cycleParkingImage() {
+    parkingIndex = (parkingIndex + 1) % parkingImages.length;
+    document.getElementById('parking-img').src = parkingImages[parkingIndex];
+}
+    </script>
+    <footer>
+        <div class="text-container">
+            <p>&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
