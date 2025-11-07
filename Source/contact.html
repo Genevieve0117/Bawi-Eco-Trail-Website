@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bawi Eco Trail</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body style="background: url('../Seal/Contact\ bg.png') no-repeat center center fixed; background-size: 100vw 100vh; margin:0; min-height:100vh;">
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="../Seal/Barangay_Bawi_Seal.png" alt="Barangay Bawi Seal" style="height:56px;width:auto;vertical-align:middle;margin-right:16px;">
+            <span style="font-size:2rem;font-weight:bold;color:#ffffff;">Barangay Bawi</span>
+        </div>
+        <nav class="navbar">
+            <a href="easter.html" id="navbar__logo">Bawi Eco Trail</a>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a class="navbar__links" href="home.html">Home</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="attraction.html">Attraction</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="facilities.html">Facilities</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="visitor-info.html">Visitor Info</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="main-centered" aria-labelledby="contact-title">
+            <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; flex-wrap: wrap;">
+                <div class="centered-box" style="max-width: 500px;">
+                    <h2 id="contact-title">Contact Us</h2>
+                    <p>If you have any questions or feedback, please fill out the form below:</p>
+                    <form action="https://formspree.io/f/xjkaobdo" method="POST" class="contact-form" autocomplete="off">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+                <div class="card-grid" style="max-width: 320px;">
+                    <div class="card">
+                        <h3>Email</h3>
+                        <p><a href="mailto:bawiecotrail.official@gmail.com">bawiecotrail.official@gmail.com</a></p>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+639456311523">+63 945 631 1523</a></p>
+                        <h3>Location</h3>
+                        <p>Brgy. Bawi, Batangas, Philippines</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p class="website__rights">&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
+    </footer>
+</body>
+</html>
