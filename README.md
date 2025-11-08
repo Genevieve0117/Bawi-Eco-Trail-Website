@@ -5,25 +5,27 @@ Welcome to the Bawi Eco Trail website project! This project provides an engaging
 ## Project Structure
 
 ```
-bawi-eco-trail-website
-├── src
-│   ├── index.html          # Main entry point with gallery and overview
-│   ├── home.html           # Home page with background image and interactive gallery
-│   ├── attraction.html     # Details about the Bawi Eco Trail, including large interactive flip cards
-│   ├── facilities.html     # Information about available facilities, cycling images, and a large Leaflet map
-│   ├── visitor-info.html   # Essential visitor information, live weather, and a large map
-│   ├── contact.html        # Contact form and info cards, with side-by-side layout
-│   ├── css
-│   │   └── styles.css      # Modern, responsive styles for containers, cards, and gallery
-│   ├── js
-│   │   ├── main.js         # Main JavaScript functionality (gallery, etc.)
-│   │   └── weather.js      # Fetches and displays weather conditions via Open-Meteo API
-│   ├── images              # Gallery images
-│   ├── Seal                # Logo, facility, and background images
-│   └── data
-│       └── info.json       # Structured data for dynamic loading
-├── package.json            # npm configuration file
-└── README.md               # Project documentation
+bawi_eco_trail_website/
+├── Source/
+│   ├── index.html         
+│   ├── about.html          
+│   ├── visitor-hub.html   
+│   ├── facilities-and-amenities.html  
+│   ├── contact.html        
+│   ├── easter.html         
+│   ├── css/
+│   │   └── styles.css     
+│   └── js/
+│       ├── main.js       
+│       └── weather.js    
+├── 3D/                   
+├── Background/            
+├── images/                 
+├── QR/                   
+├── Seal/              
+├── Slideshow/            
+├── Texture/              
+└── package.json          
 ```
 
 ## Key Features
