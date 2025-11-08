@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
 </head>
-<body style="background: #FFF7EC; margin:0; min-height:100vh;">
+<body>
     <header>
-        <div style="display: flex; align-items: center;">
-            <img src="../Seal/Barangay_Bawi_Seal.png" alt="Barangay Bawi Seal" style="height:56px;width:auto;vertical-align:middle;margin-right:16px;">
-            <span style="font-size:2rem;font-weight:bold;color:#ffffff;">Barangay Bawi</span>
+        <div style="text-align:center;margin-bottom:4px;">
+            <img src="../Seal/Barangay_Bawi_Seal.png" alt="Barangay Bawi Seal" style="height:32px;width:auto;vertical-align:middle;margin-right:8px;">
+            <span style="display:inline-block;vertical-align:middle;font-size:1.5rem;font-weight:bold;color:#ffffff;">Barangay Bawi</span>
         </div>
         <nav class="navbar">
             <a href="index.html" id="navbar__logo">Bawi Eco Trail</a>
@@ -59,12 +59,59 @@
                     <div id="weather-info" class="with-weekends"></div>
                 </div>
             </section>
+
+            <section>
+                <div class="text-container">
+                    <h2>Tourist Arrivals</h2>
+                    <div class="stats-box">
+                        <div class="stats-flex">
+                            <div class="total-visitors">
+                                <h3>Total Visitors: 32,108</h3>
+                                <p>(April 2023 - March 2025)</p>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="touristChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
                         <!-- Leaflet map container -->
                 <div id="map" style="width:100%;max-width:1200px;height:700px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.10);margin:32px auto 0 auto;position:relative;z-index:1;"></div>
             </section>
 
             <style>
+                /* Container styles that match the website theme */
+                body {
+                    background: #EDE8D0;
+                    color: #333333;
+                }
+
+                .text-container, .statistics-container {
+                    background: rgba(128, 128, 128, 0.85);
+                    padding: 24px 32px;
+                    border-radius: 16px;
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+                    color: #f1f1f1;
+                }
+
+                .qr-section {
+                    background: rgba(255, 255, 255, 0.8);
+                    padding: 1.5rem;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                .price-summary {
+                    background: rgba(245, 245, 245, 0.9);
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+                }
+
+
+
                 /* Override Leaflet control styles to stay within map bounds */
                 .leaflet-control-container {
                     z-index: 1 !important;
@@ -79,12 +126,119 @@
                 .leaflet-control {
                     z-index: 2 !important;
                 }
+
+                .statistics-container {
+                    padding: 24px 32px;
+                    background: rgba(128, 128, 128, 0.85);
+                    border-radius: 16px;
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+                    margin: 32px auto;
+                    max-width: 1200px;
+                    color: #f1f1f1;
+                }
+
+                .stats-box {
+                    background: rgba(255, 255, 255, 0.8);
+                    padding: 20px;
+                    border-radius: 12px;
+                    margin-top: 20px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                .stats-flex {
+                    display: flex;
+                    align-items: center;
+                    gap: 40px;
+                }
+
+                .total-visitors {
+                    text-align: center;
+                    min-width: 250px;
+                    padding: 20px;
+                    background: rgba(255, 255, 255, 0.9);
+                    border-radius: 12px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    color: #333333;
+                }
+
+                .total-visitors h3 {
+                    color: #2c3e50;
+                    font-size: 1.8em;
+                    margin-bottom: 10px;
+                }
+
+                .total-visitors p {
+                    color: #7f8c8d;
+                    margin: 0;
+                    font-size: 1.1em;
+                }
+
+                .stats-box {
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 24px;
+                    border-radius: 12px;
+                    margin-top: 20px;
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+                }
+
+                .stats-flex {
+                    display: flex;
+                    align-items: center;
+                    gap: 32px;
+                    justify-content: space-between;
+                }
+
+                .total-visitors {
+                    text-align: center;
+                    min-width: 250px;
+                    padding: 24px;
+                    background: rgba(255, 255, 255, 0.95);
+                    border-radius: 12px;
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                }
+
+                .total-visitors h3 {
+                    color: #388E3C;
+                    font-size: 1.8em;
+                    margin-bottom: 12px;
+                }
+
+                .total-visitors p {
+                    color: #333333;
+                    margin: 0;
+                    font-size: 1.1em;
+                }
+
+                .chart-container {
+                    flex: 1;
+                    height: 300px;
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 16px;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                }
+
+                @media (max-width: 768px) {
+                    .stats-flex {
+                        flex-direction: column;
+                        gap: 24px;
+                    }
+
+                    .total-visitors {
+                        width: 100%;
+                        min-width: unset;
+                    }
+
+                    .chart-container {
+                        width: 100%;
+                        height: 250px;
+                    }
+                }
             </style>
     </main>
     <footer>
-        <div class="text-container">
-            <p>&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
-        </div>
+        <p class="website__rights">&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
     </footer>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
@@ -152,5 +306,116 @@
     </script>
     <script src="js/main.js"></script>
     <script src="js/weather.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Tourist Arrivals Chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const touristCtx = document.getElementById('touristChart').getContext('2d');
+            new Chart(touristCtx, {
+                type: 'line',
+                data: {
+                    labels: [
+                        'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023',
+                        'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025'
+                    ],
+                    datasets: [{
+                        label: 'Monthly Visitors',
+                        data: [8188, 2659, 3912, 5361, 4664, 1091, 1091, 1555, 941, 1091, 1555],
+                        fill: true,
+                        backgroundColor: 'rgba(56, 142, 60, 0.2)', // Matches website green
+                        borderColor: '#388E3C', // Matches website green
+                        tension: 0.3,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        pointBackgroundColor: '#388E3C',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Monthly Tourist Arrivals',
+                            color: '#333333',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        },
+                        legend: {
+                            labels: {
+                                color: '#333333',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#333333',
+                            bodyColor: '#333333',
+                            borderColor: '#388E3C',
+                            borderWidth: 1,
+                            padding: 10,
+                            displayColors: true
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Visitors',
+                                color: '#333333',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                color: '#333333',
+                                font: {
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Month',
+                                color: '#333333',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                color: '#333333',
+                                font: {
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'nearest'
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
