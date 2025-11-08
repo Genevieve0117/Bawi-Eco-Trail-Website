@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facilities & Amenities - Bawi Eco Trail</title>
+    <title>Visitor Hub - Bawi Eco Trail</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js" defer></script>
-    <!-- Leaflet CSS & JS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
 </head>
 <body>
     <header>
@@ -28,287 +26,396 @@
     </header>
     <main>
         <div class="centered-content">
-            <!-- About Section -->
             <section>
                 <div class="text-container">
-                    <h2>About Bawi Eco Trail</h2>
-                    <p>The Bawi Eco Trail is a stunning natural attraction located in Batangas, offering visitors a unique opportunity to explore the rich biodiversity and scenic landscapes of the region. The trail is designed for eco-tourism, promoting environmental awareness and conservation.</p>
-                </div>
-            </section>
-
-            <!-- Attractions Section -->
-            <section>
-                <div class="text-container">
-                    <h2>Main Attractions</h2>
+                    <h2 style="margin-top: 30px;">Operating Hours</h2>
+                    <p>Everyday: 8:30 AM - 5:00 PM</p>
+                    <p>Saturday and Sunday: 7:00 AM - 6:00 PM</p>
+                    <h2 style="margin-top: 30px;">Rules and Guidelines</h2>
                     <ul>
-                        <li>Shrines</li>
-                        <li>Clean River</li>
-                        <li>Romantic Scenery</li>
-                        <li>Fresh Mountain Water</li>
+                        <li>Stay on designated trails.</li>
+                        <li>No littering; please take your trash with you.</li>
+                        <li>Respect wildlife and do not feed animals.</li>
+                        <li>Follow all posted signs and instructions.</li>
                     </ul>
                 </div>
             </section>
             
-            <!-- History Section -->
+            <!-- QR Section -->
             <section>
-                <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; flex-wrap: wrap;">
-                    <div class="centered-box" style="max-width: 500px; min-width: 280px;">
-                        <h2>History and Significance</h2>
-                        <p>
-                            Surrounded by the beauty of nature lies the Bawi Eco Trail, a place that continues to inspire both locals and visitors alike. It provides a sustainable and smart tourism model for the Bawi Eco Trail that can serve as a benchmark for other rural destinations. The local government, as its results, will provide a basis for crafting policies on environmental protection, zoning, and infrastructure improvement. It can also guide disaster risk reduction and ecological management.
-                        </p>
-                    </div>
-                    <div class="centered-box" style="max-width: 500px; min-width: 280px;">
-                        <p>
-                            Next are the Local Residents, whose lives are deeply connected to the land and its natural treasures. The local community will benefit as it will identify livelihood opportunities and needed skills development to maximize the economic potential of tourism for the local community. Then come the Tourism Establishments, the stewards of visitor experience and service. This is also significant to the management and operators as it offers a practical framework for improving visitor experience, adopting smart tools, upgrading facilities, and professionalizing the workforce.
-                        </p>
+                <div class="qr-section">
+                    <h2>Payment</h2>
+                    <img src="../QR/pricing-qr.png" alt="QR Code" class="qr-code">
+                    <div class="price-summary">
+                        <h3>Price</h3>
+                        <p>Entrance Fee: ₱40.00 per head</p>
+                        <p>Cottage Rental: ₱400.00 - ₱500.00</p>
                     </div>
                 </div>
             </section>
-
-            <!-- Flip Cards for Major Attractions -->
             <section>
-                <div class="text-container">
-                    <h2>Featured Attractions</h2>
-                    <div class="card-grid-flip">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Heart Pool.png" alt="Card Image 1" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Heart-Shaped Pool – A lovely heart-inspired pool that captures the essence of love and relaxation, perfect for couples, families, and fun photo moments.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Rectangle Pool.png" alt="Card Image 2" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Rectangle-Shaped pool – Take a dip in the refreshing natural spring water that keeps you cool and energized while enjoying the scenic surroundings.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Mama Mary Statue.png" alt="Card Image 3" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Mama Mary Statue – A serene spot for prayer and reflection, offering peace and comfort in the heart of nature.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Park.png" alt="Card Image 4" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Small Eco Park – A cozy green space at the center of the trail, ideal for picnics, rest, and nature appreciation.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Heart swing.png" alt="Card Image 5" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Heart-Shaped Swing – A picture-perfect attraction where visitors can relax, take photos, and enjoy the romantic charm of the eco trail.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/River side.png" alt="Card Image 6" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Riverside Area – A tranquil river flowing along the trail where guests can unwind, listen to the soothing sound of water, and enjoy the natural scenery.</p>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="weather-container">
+                    <h2>7-Day Weather Forecast</h2>
+                    <div id="weather-info" class="with-weekends"></div>
                 </div>
             </section>
 
-            <!-- Available Facilities Section -->
             <section>
                 <div class="text-container">
-                    <h2>Available Facilities</h2>
-                    <ul style="list-style: none; padding: 0;">
-                        <li>
-                            <strong>Entrance & Exit</strong> A proper entrance and exit, with a bulletin map and a QR for the website.
-                            <br>
-                            <img src="../3D/Visitors Info - add image on container.png" alt="Store Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
-                        </li>
-                        <li>
-                            <strong>Restrooms</strong> Clean and accessible restrooms are available throughout the trail.
-                            <br>
-                            <img
-                                src="../3D/Restroom 1.png"
-                                alt="Restroom Placeholder"
-                                id="restroom-img"
-                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="cycleRestroomImage()"
-                            >
-                        </li>
-                        <li>
-                            <strong>Shower Area</strong> Used to cleanse before using the pools.
-                            <br>
-                            <img
-                                src="../3D/Shower 1.png"
-                                alt="Shower Area Placeholder"
-                                id="shower-img"
-                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="cycleShowerImage()"
-                            >
-                        </li>
-                        <li>
-                            <strong>Lodging</strong> Designated resting and eating areas with tables and benches for visitors to enjoy.
-                            <br>
-                            <img
-                                src="../3D/Lodging 1 Large.png"
-                                alt="Lodging Placeholder"
-                                id="lodging-img"
-                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="cycleLodgingImage()"
-                            >
-                        </li>
-                        <li>
-                            <strong>Parking</strong> There is no designated parking, but locals advised that the bridge could be a Parking Area.
-                            <br>
-                            <img
-                                src="../3D/Parking 1.png"
-                                alt="Parking Placeholder"
-                                id="parking-img"
-                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="cycleParkingImage()"
-                            >
-                        </li>
-                        <li>
-                            <strong>Small Store</strong> Provides essential goods and refreshments to visitors.
-                            <br>
-                            <img src="../3D/Small Store.png" alt="Store Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
-                        </li>
-                        <li>
-                            <strong>Patio</strong> A relaxing outdoor space for dining, lounging, and enjoying scenic resort views.
-                            <br>
-                            <img src="../3D/Patio Set.png" alt="Patio Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
-                        </li>
-                        <br>
-                        <li style="text-align: center;">
-                            <strong>Overall Map</strong>
-                            <br>
-                            <img
-                                src="../Texture/Map.png"
-                                alt="Map"
-                                id="overall-map-img"
-                                style="margin:10px auto; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="showMapModal()"
-                            >
-                        </li>
-                    </ul>
+                    <h2>Tourist Arrivals</h2>
+                    <div class="stats-box">
+                        <div class="stats-flex">
+                            <div class="total-visitors">
+                                <h3>Total Visitors: 32,108</h3>
+                                <p>(April 2023 - March 2025)</p>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="touristChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
+                        <!-- Leaflet map container -->
+                <div id="map" style="width:100%;max-width:1200px;height:700px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.10);margin:32px auto 0 auto;position:relative;z-index:1;"></div>
+            </section>
+
+            <style>
+                /* Container styles that match the website theme */
+                body {
+                    background: #EDE8D0;
+                    color: #333333;
+                }
+
+                .text-container, .statistics-container {
+                    background: rgba(128, 128, 128, 0.85);
+                    padding: 24px 32px;
+                    border-radius: 16px;
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+                    color: #f1f1f1;
+                }
+
+                .qr-section {
+                    background: rgba(255, 255, 255, 0.8);
+                    padding: 1.5rem;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                .price-summary {
+                    background: rgba(245, 245, 245, 0.9);
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+                }
+
+
+
+                /* Override Leaflet control styles to stay within map bounds */
+                .leaflet-control-container {
+                    z-index: 1 !important;
+                }
+                .leaflet-routing-container {
+                    z-index: 2 !important;
+                    max-height: 500px;
+                    overflow-y: auto;
+                    margin-top: 10px !important;
+                    background: rgba(255, 255, 255, 0.9) !important;
+                }
+                .leaflet-control {
+                    z-index: 2 !important;
+                }
+
+                .statistics-container {
+                    padding: 24px 32px;
+                    background: rgba(128, 128, 128, 0.85);
+                    border-radius: 16px;
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+                    margin: 32px auto;
+                    max-width: 1200px;
+                    color: #f1f1f1;
+                }
+
+                .stats-box {
+                    background: rgba(255, 255, 255, 0.8);
+                    padding: 20px;
+                    border-radius: 12px;
+                    margin-top: 20px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                .stats-flex {
+                    display: flex;
+                    align-items: center;
+                    gap: 40px;
+                }
+
+                .total-visitors {
+                    text-align: center;
+                    min-width: 250px;
+                    padding: 20px;
+                    background: rgba(255, 255, 255, 0.9);
+                    border-radius: 12px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    color: #333333;
+                }
+
+                .total-visitors h3 {
+                    color: #2c3e50;
+                    font-size: 1.8em;
+                    margin-bottom: 10px;
+                }
+
+                .total-visitors p {
+                    color: #7f8c8d;
+                    margin: 0;
+                    font-size: 1.1em;
+                }
+
+                .stats-box {
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 24px;
+                    border-radius: 12px;
+                    margin-top: 20px;
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+                }
+
+                .stats-flex {
+                    display: flex;
+                    align-items: center;
+                    gap: 32px;
+                    justify-content: space-between;
+                }
+
+                .total-visitors {
+                    text-align: center;
+                    min-width: 250px;
+                    padding: 24px;
+                    background: rgba(255, 255, 255, 0.95);
+                    border-radius: 12px;
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                }
+
+                .total-visitors h3 {
+                    color: #388E3C;
+                    font-size: 1.8em;
+                    margin-bottom: 12px;
+                }
+
+                .total-visitors p {
+                    color: #333333;
+                    margin: 0;
+                    font-size: 1.1em;
+                }
+
+                .chart-container {
+                    flex: 1;
+                    height: 300px;
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 16px;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                }
+
+                @media (max-width: 768px) {
+                    .stats-flex {
+                        flex-direction: column;
+                        gap: 24px;
+                    }
+
+                    .total-visitors {
+                        width: 100%;
+                        min-width: unset;
+                    }
+
+                    .chart-container {
+                        width: 100%;
+                        height: 250px;
+                    }
+                }
+            </style>
     </main>
-
-    <!-- Modals -->
-    <div id="map-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
-        <img id="modal-map-img" src="../Texture/Map.png" alt="Map Enlarged" style="max-width:90vw;max-height:90vh;border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.25);background:#fff;">
-    </div>
-    <div id="card-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
-        <img id="modal-img" src="" alt="Enlarged Card Image" style="max-width:90vw;max-height:90vh;border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.25);background:#fff;">
-    </div>
-
     <footer>
         <p class="website__rights">&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
     </footer>
-
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
     <script>
-    // Map modal functionality
-    function showMapModal() {
-        document.getElementById('map-modal').style.display = 'flex';
-    }
-    document.getElementById('map-modal').onclick = function() {
-        this.style.display = 'none';
-    };
+    const bawiEcoTrail = [13.8797, 121.2057];
+    document.addEventListener('DOMContentLoaded', function() {
+        const map = L.map('map').setView(bawiEcoTrail, 16);
 
-    // Flip card modal functionality
-    document.querySelectorAll('.flip-card').forEach(function(card) {
-        card.onclick = function(e) {
-            // Only enlarge if the click is on the front side
-            const img = card.querySelector('.flip-card-front img');
-            if (img && e.target.closest('.flip-card-front')) {
-                document.getElementById('modal-img').src = img.src;
-                document.getElementById('card-modal').style.display = 'flex';
-            }
-        };
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const destinationMarker = L.marker(bawiEcoTrail)
+            .addTo(map)
+            .bindPopup('Bawi Eco Trail<br>Padre Garcia, Batangas')
+            .openPopup();
+
+        // Get user's location and show route
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const userLocation = [position.coords.latitude, position.coords.longitude];
+                
+                // Add marker for user's location
+                L.marker(userLocation)
+                    .addTo(map)
+                    .bindPopup('Your Location')
+                    .openPopup();
+
+                // Create the routing control
+                const routingControl = L.Routing.control({
+                    waypoints: [
+                        L.latLng(userLocation[0], userLocation[1]),
+                        L.latLng(bawiEcoTrail[0], bawiEcoTrail[1])
+                    ],
+                    routeWhileDragging: true,
+                    showAlternatives: true,
+                    altLineOptions: {
+                        styles: [
+                            {color: 'black', opacity: 0.15, weight: 9},
+                            {color: '#40676E', opacity: 0.8, weight: 6},
+                            {color: '#FFF', opacity: 0.8, weight: 2}
+                        ]
+                    },
+                    lineOptions: {
+                        styles: [
+                            {color: 'black', opacity: 0.15, weight: 9},
+                            {color: '#4CAF50', opacity: 0.8, weight: 6},
+                            {color: '#FFF', opacity: 0.8, weight: 2}
+                        ]
+                    }
+                }).addTo(map);
+
+                // Fit the map to show both points
+                const bounds = L.latLngBounds(userLocation, bawiEcoTrail);
+                map.fitBounds(bounds, { padding: [50, 50] });
+
+            }, function(error) {
+                console.error("Error getting location:", error);
+                alert("Please enable location services to see the route to Bawi Eco Trail.");
+            });
+        } else {
+            alert("Location services are not supported by your browser.");
+        }
     });
-    document.getElementById('card-modal').onclick = function() {
-        this.style.display = 'none';
-        document.getElementById('modal-img').src = '';
-    };
-
-    // Pool image cycling
-    const poolImages = [
-        "../3D/Heart Pool.png",
-        "../3D/Rectangle Pool.png"
-    ];
-    let poolIndex = 0;
-    function cyclePoolImage() {
-        poolIndex = (poolIndex + 1) % poolImages.length;
-        document.getElementById('swimming-pool-img').src = poolImages[poolIndex];
-    }
-
-    // Restroom image cycling
-    const restroomImages = [
-        "../3D/Restroom 1.png",
-        "../3D/Restroom 2.png",
-        "../3D/Restroom outside.png"
-    ];
-    let restroomIndex = 0;
-    function cycleRestroomImage() {
-        restroomIndex = (restroomIndex + 1) % restroomImages.length;
-        document.getElementById('restroom-img').src = restroomImages[restroomIndex];
-    }
-
-    // Lodging image cycling
-    const lodgingImages = [
-        "../3D/Lodging 1 Large.png",
-        "../3D/Lodging 2 Small.png"
-    ];
-    let lodgingIndex = 0;
-    function cycleLodgingImage() {
-        lodgingIndex = (lodgingIndex + 1) % lodgingImages.length;
-        document.getElementById('lodging-img').src = lodgingImages[lodgingIndex];
-    }
-
-    // Shower image cycling
-    const showerImages = [
-        "../3D/Shower 1.png",
-        "../3D/Shower 2.png"
-    ];
-    let showerIndex = 0;
-    function cycleShowerImage() {
-        showerIndex = (showerIndex + 1) % showerImages.length;
-        document.getElementById('shower-img').src = showerImages[showerIndex];
-    }
-
-    // Parking image cycling
-    const parkingImages = [
-        "../3D/Parking 1.png",
-        "../3D/Parking 2.png"
-    ];
-    let parkingIndex = 0;
-    function cycleParkingImage() {
-        parkingIndex = (parkingIndex + 1) % parkingImages.length;
-        document.getElementById('parking-img').src = parkingImages[parkingIndex];
-    }
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Tourist Arrivals Chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const touristCtx = document.getElementById('touristChart').getContext('2d');
+            new Chart(touristCtx, {
+                type: 'line',
+                data: {
+                    labels: [
+                        'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023',
+                        'Oct 2024', 'Nov 2024', 'Dec 2024', 'Jan 2025', 'Feb 2025', 'Mar 2025'
+                    ],
+                    datasets: [{
+                        label: 'Monthly Visitors',
+                        data: [8188, 2659, 3912, 5361, 4664, 1091, 1091, 1555, 941, 1091, 1555],
+                        fill: true,
+                        backgroundColor: 'rgba(56, 142, 60, 0.2)', // Matches website green
+                        borderColor: '#388E3C', // Matches website green
+                        tension: 0.3,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        pointBackgroundColor: '#388E3C',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Monthly Tourist Arrivals',
+                            color: '#333333',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            padding: 20
+                        },
+                        legend: {
+                            labels: {
+                                color: '#333333',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#333333',
+                            bodyColor: '#333333',
+                            borderColor: '#388E3C',
+                            borderWidth: 1,
+                            padding: 10,
+                            displayColors: true
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Visitors',
+                                color: '#333333',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                color: '#333333',
+                                font: {
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Month',
+                                color: '#333333',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                color: '#333333',
+                                font: {
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'nearest'
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
