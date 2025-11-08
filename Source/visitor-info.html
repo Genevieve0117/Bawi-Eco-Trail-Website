@@ -8,18 +8,17 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
 </head>
-<body style="background: url('../Seal/Visitors_bg.jpg') no-repeat center center fixed; background-size: 100vw 100vh; margin:0; min-height:100vh;">
+<body style="background: #FFF7EC; margin:0; min-height:100vh;">
     <header>
         <div style="display: flex; align-items: center;">
             <img src="../Seal/Barangay_Bawi_Seal.png" alt="Barangay Bawi Seal" style="height:56px;width:auto;vertical-align:middle;margin-right:16px;">
             <span style="font-size:2rem;font-weight:bold;color:#ffffff;">Barangay Bawi</span>
         </div>
         <nav class="navbar">
-            <a href="home.html" id="navbar__logo">Bawi Eco Trail</a>
+            <a href="index.html" id="navbar__logo">Bawi Eco Trail</a>
             <ul class="navbar__menu">
-                <li class="navbar__item"><a class="navbar__links" href="home.html">Home</a></li>
-                <li class="navbar__item"><a class="navbar__links" href="attraction.html">Attraction</a></li>
-                <li class="navbar__item"><a class="navbar__links" href="facilities.html">Facilities</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="index.html">Home</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="facilities-and-amenities.html">Facilities & Amenities</a></li>
                 <li class="navbar__item"><a class="navbar__links" href="visitor-info.html">Visitor Info</a></li>
                 <li class="navbar__item"><a class="navbar__links" href="contact.html">Contact</a></li>
             </ul>
@@ -29,9 +28,6 @@
         <div class="centered-content">
             <section>
                 <div class="text-container">
-                    <h2>Entrance Fees</h2>
-                    <p>Per Person: ₱40</p>
-                    <p>Cottages: ₱400-₱500</p>
                     <h2 style="margin-top: 30px;">Operating Hours</h2>
                     <p>Everyday: 6:30 AM - 5:00 PM</p>
                     <p>Saturday and Sunday: 7:00 AM - 6:00 PM</p>
@@ -44,6 +40,19 @@
                     </ul>
                 </div>
             </section>
+            
+            <!-- QR Section -->
+            <section>
+                <div class="qr-section">
+                    <h2>Payment</h2>
+                    <img src="../QR.png" alt="QR Code" class="qr-code">
+                    <div class="price-summary">
+                        <h3>Price</h3>
+                        <p>Entrance Fee: ₱40.00 per head</p>
+                        <p>Cottage Rental: ₱400.00 - ₱500.00</p>
+                    </div>
+                </div>
+            </section>
             <section>
                 <div class="weather-container">
                     <h2>7-Day Weather Forecast</h2>
@@ -52,8 +61,25 @@
             </section>
         </div>
                         <!-- Leaflet map container -->
-                <div id="map" style="width:100%;max-width:1200px;height:700px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.10);margin:32px auto 0 auto;"></div>
+                <div id="map" style="width:100%;max-width:1200px;height:700px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.10);margin:32px auto 0 auto;position:relative;z-index:1;"></div>
             </section>
+
+            <style>
+                /* Override Leaflet control styles to stay within map bounds */
+                .leaflet-control-container {
+                    z-index: 1 !important;
+                }
+                .leaflet-routing-container {
+                    z-index: 2 !important;
+                    max-height: 500px;
+                    overflow-y: auto;
+                    margin-top: 10px !important;
+                    background: rgba(255, 255, 255, 0.9) !important;
+                }
+                .leaflet-control {
+                    z-index: 2 !important;
+                }
+            </style>
     </main>
     <footer>
         <div class="text-container">
