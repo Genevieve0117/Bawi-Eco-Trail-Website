@@ -10,8 +10,8 @@ body {
     background: #f9f9f9;
     color: #333;
     line-height: 1.6;
-    padding-top: 90px;   /* Height of header */
-    padding-bottom: 80px; /* Height of footer */
+    padding-top: 70px;   /* Reduced header height */
+    padding-bottom: 60px; /* Reduced footer height */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -21,31 +21,31 @@ body {
 header {
     background: #4CAF50;
     color: #fff;
-    padding: 10px 0;
+    padding: 5px 0;
     text-align: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 /* Navigation */
 .navbar {
     background: #388E3C;
-    height: 64px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 #navbar__logo {
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-decoration: none;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .navbar__menu {
@@ -55,21 +55,22 @@ header {
 }
 
 .navbar__item {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .navbar__links {
     color: #fff;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 3px;
     transition: background 0.3s, color 0.3s, transform 0.2s;
+    font-size: 0.95rem;
 }
 
 .navbar__links:hover {
     background: #43A047;
     color: #fff;
-    transform: translateY(-2px) scale(1.08);
+    transform: translateY(-1px) scale(1.05);
 }
 
 /* Card Styles */
@@ -153,26 +154,30 @@ footer {
     background: #388E3C;
     color: #fff;
     text-align: center;
-    padding: 24px 0 12px 0;
+    padding: 4px 0;
     width: 100%;
     position: fixed;
     left: 0;
     bottom: 0;
-    z-index: 1000;
+    z-index: 9999;
     animation: fadeInUp 1s 0.7s backwards;
+    font-size: 0.7rem;
+    min-height: 20px;
+    line-height: 1;
 }
 
 /* Prevent content from going under header/footer */
 main {
     flex: 1 0 auto;
-    padding-top: 80px;    /* Adjust based on header height */
-    padding-bottom: 80px; /* Adjust based on footer height */
+    padding-top: 60px;    /* Reduced header padding */
+    padding-bottom: 25px; /* Minimized footer padding */
 }
 
 .website__rights {
     color: #fff;
-    font-size: 0.95rem;
-    margin-top: 12px;
+    font-size: 0.65rem;
+    margin: 0;
+    line-height: 1;
 }
 
 /* Main Centered Styles */
@@ -217,16 +222,29 @@ main .text-container li {
     color: #f1f1f1;
     text-align: center;
     display: inline-block;
-    max-width: 700px;
-    min-width: 220px;
-    width: auto;
+    width: 100%;
     margin-bottom: 24px;
     opacity: 0;
     transform: scale(0.95);
     animation: boxFadeIn 1s 0.3s forwards;
     box-sizing: border-box;
-    min-height: unset;
-    height: auto;
+    height: fit-content;
+}
+
+/* Special container for Featured Attractions */
+.text-container:has(.card-grid-flip) {
+    max-width: none;
+    width: 95%;
+    padding: 24px;
+    background: rgba(128, 128, 128, 0.5);
+    height: fit-content;
+}
+
+/* Regular text containers */
+.text-container:not(:has(.card-grid-flip)) {
+    max-width: 700px;
+    min-width: 220px;
+    width: auto;
 }
 
 /* Headings inside containers */
@@ -323,20 +341,158 @@ main .text-container li {
     right: 10px;
 }
 
-/* Weather Forecast Styles */
+/* Highlights Styles */
+.highlights-container {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.highlight-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.highlight-card h3 {
+    color: #388E3C;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.highlight-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: #388E3C;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* QR and Rules Styles */
+.qr-section {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem auto;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.qr-section h2 {
+    color: #388E3C;
+    margin-bottom: 1rem;
+}
+
+.qr-code {
+    width: 180px;
+    height: 180px;
+    margin: 1rem auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.price-summary {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(245, 245, 245, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.price-summary h3 {
+    color: #388E3C;
+    margin-bottom: 0.8rem;
+}
+
+.price-summary p {
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.rules-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+.rules-container h3 {
+    color: #388E3C;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.rules-container h3:first-child {
+    margin-top: 0;
+}
+
+.rules-container ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.rules-container ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.rules-container ul li::before {
+    content: "•";
+    color: #4CAF50;
+    position: absolute;
+    left: 0;
+}
+
+.rules-container ul ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Weather Styles */
 .weather-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background: rgba(128, 128, 128, 0.7);
-    border-radius: 16px;
-}
-
-.weather-container h2 {
-    color: #fff;
-    text-align: center;
-    margin-bottom: 20px;
 }
 
 #weather-info {
@@ -347,6 +503,7 @@ main .text-container li {
 }
 
 #weather-info.with-weekends {
+    display: grid;
     grid-template-areas: 
         "sun mon tue wed fri"
         "thu sat . . .";
@@ -409,6 +566,12 @@ main .text-container li {
     display: inline-block;
 }
 
+/* Weekend cards style */
+.weather-card.weekend {
+    background: linear-gradient(to bottom right, #ffffff, #f0f7f0);
+    border: 2px solid #4CAF50;
+}
+
 /* Day-specific grid areas */
 .weather-card:nth-child(1) { grid-area: sun; }
 .weather-card:nth-child(2) { grid-area: mon; }
@@ -431,55 +594,52 @@ main .text-container li {
     .weather-container {
         padding: 15px;
     }
-}
 
-/* Weather Container Specific Styles */
-.text-container.weather-container {
-    width: 95%;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#weather-info {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto;
-    gap: 1rem;
-    width: 100%;
-}
-
-/* Responsive adjustments */
-@media (max-width: 900px) {
-    .centered-box,
-    .text-container {
-        padding: 16px 8px;
-        max-width: 98vw;
+    .rules-container {
+        padding: 1.5rem;
     }
 }
 
-/* Responsive flip card grid */
+/* Card Grid Styles */
 .card-grid-flip {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 32px;
-    justify-items: center;
-    margin: 32px auto;
-    max-width: 1400px;
-    width: 100%;
+    grid-template-columns: repeat(3, 350px);
+    gap: 30px;
+    margin: 0 auto;
+    width: max-content;
     box-sizing: border-box;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: start;
 }
 
+@media (max-width: 1200px) {
+    .card-grid-flip {
+        grid-template-columns: repeat(2, 350px);
+        padding: 25px;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-grid-flip {
+        grid-template-columns: 350px;
+        padding: 20px;
+        gap: 20px;
+    }
+}
+
+/* Flip Card Styles */
 .flip-card {
     background: transparent;
-    width: 100%;
-    max-width: 440px;
-    aspect-ratio: 16/10;
+    width: 350px;
+    height: 220px;
     perspective: 1000px;
-    height: auto;
 }
 
 .flip-card-inner {
