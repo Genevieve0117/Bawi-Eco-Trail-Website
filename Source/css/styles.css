@@ -1,3 +1,28 @@
+:root {
+    --light-bg: #EDE8D0;
+    --dark-bg: #0E1A26;
+    --green-text: #62C281;
+}
+
+[data-theme="light"] {
+    --bg-color: #EDE8D0;
+    --text-color: #62C281;
+    --container-bg: #ffffff;
+    --stats-box-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --link-color: #388E3C;
+    --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    --header-text: #ffffff;
+    --qr-section-bg: rgba(255, 255, 255, 0.8);
+    --price-summary-bg: rgba(245, 245, 245, 0.9);
+    --weather-card-bg: #ffffff;
+    --weather-card-border: #e0e0e0;
+    --chart-text: #333333;
+    --chart-grid: #e0e0e0;
+    --centered-box-bg: rgba(128, 128, 128, 0.7);
+    --flip-card-back-bg: #388E3C;
+}
+
 /* Reset and base styles */
 * {
     box-sizing: border-box;
@@ -6,12 +31,46 @@
     font-family: 'Arial', 'Kumbh Sans', sans-serif;
 }
 
+/* Base body styles */
 body {
-    background: #f9f9f9;
-    color: #333;
+    margin: 0;
+    min-height: 100vh;
+    background: #EDE8D0;
+}
+
+/* Background image styles */
+body.background-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body.background-image::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    transition: background-color 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Ensure content stays above overlay */
+main {
+    position: relative;
+    z-index: 2;
+}
+
+body {
+    background: #EDE8D0;
+    color: #333333;
     line-height: 1.6;
-    padding-top: 70px;   /* Reduced header height */
-    padding-bottom: 60px; /* Reduced footer height */
+    padding-top: 45px;   /* Reduced header height */
+    padding-bottom: 30px; /* Reduced footer height */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,30 +78,33 @@ body {
 
 /* Fixed Header */
 header {
-    background: #8BCA84;
+    background: #033500;
     color: #fff;
-    padding: 5px 0;
+    padding: 2px 0;
     text-align: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Navigation */
 .navbar {
-    background: #72BF6A;
-    height: 50px;
+    background: #033500;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 #navbar__logo {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-decoration: none;
     font-weight: bold;
     letter-spacing: 1px;
@@ -151,7 +213,7 @@ header {
 
 /* Fixed Footer */
 footer {
-    background: #72BF6A;
+    background: #033500;
     color: #fff;
     text-align: center;
     padding: 4px 0;
@@ -215,10 +277,11 @@ main .text-container li {
 /* Container styles for main content */
 .centered-box,
 .text-container {
-    background: rgba(128, 128, 128, 0.7);
+    background: rgba(128, 128, 128, 0.85);
     padding: 24px 32px;
     border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     color: #f1f1f1;
     text-align: center;
     display: inline-block;
@@ -236,7 +299,8 @@ main .text-container li {
     max-width: none;
     width: 95%;
     padding: 24px;
-    background: rgba(128, 128, 128, 0.5);
+    background: rgba(128, 128, 128, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     height: fit-content;
 }
 
