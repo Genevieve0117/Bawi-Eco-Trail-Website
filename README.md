@@ -1,6 +1,6 @@
 # Bawi Eco Trail Website
 
-Welcome to the Bawi Eco Trail website project! This project provides an engaging online presence for the Bawi Eco Trail attraction in Batangas, featuring interactive content, live weather, and essential visitor information.
+Welcome to the Bawi Eco Trail website project! This project showcases the natural beauty and facilities of Bawi Eco Trail in Batangas, featuring an interactive gallery, detailed facility information, and essential visitor resources.
 
 ## Project Structure
 
@@ -8,68 +8,74 @@ Welcome to the Bawi Eco Trail website project! This project provides an engaging
 bawi_eco_trail_website/
 ├── Source/
 │   ├── index.html         
-│   ├── about.html          
 │   ├── visitor-hub.html   
 │   ├── facilities-and-amenities.html  
-│   ├── contact.html        
-│   ├── easter.html         
+│   ├── contact.html       
+│   ├── easter.html        
 │   ├── css/
 │   │   └── styles.css     
 │   └── js/
-│       ├── main.js       
-│       └── weather.js    
-├── 3D/                   
+│       └── weather.js     
+├── 3D/                    
 ├── Background/            
-├── images/                 
+├── images/              
 ├── QR/                   
-├── Seal/              
-├── Slideshow/            
-├── Texture/              
-└── package.json          
+├── Seal/                
+├── Slideshow/           
+└── Texture/             
 ```
 
 ## Key Features
 
 - **Modern Responsive Design:** Mobile-friendly layout with visually appealing containers and justified text.
-- **Custom Backgrounds:** Each page can have its own background image using inline styles.
-- **Header Logo:** Each page header displays a relevant logo next to the site title.
-- **Interactive Gallery:** Home and index pages feature a clickable, auto-cycling image gallery with transparent navigation.
-- **Live Weather:** Visitor Info page shows current weather using Open-Meteo API.
-- **Large Map Integration:** Facilities and Visitor Info pages display a large, interactive Leaflet map for Bawi Eco Trail's location.
-- **Contact Form:** Contact page includes a form (Formspree integration recommended) and info cards, displayed side by side.
-- **Card Grid:** Contact info is presented in a card grid layout, now supporting four cards.
-- **Dynamic Content:** Visitor info and other details can be loaded from `info.json`.
-- **Flip Cards:** Attraction page features large, responsive flip cards with image popout on click.
-- **Cycling Facility Images:** Facilities page allows cycling through multiple images for restrooms, pools, lodging, and showers by clicking the images.
-- **Image Popouts:** Facility and gallery images can be clicked to view a larger version in a modal popout.
-- **Consistent Centered and Justified Layouts:** All main content uses centered containers with justified text for readability.
-- **Horizontal and Responsive Layouts:** Sections like "Explore the Beauty of Nature" and "Trail Highlights" are displayed side by side and adapt to screen size.
-- **Accessibility:** All images have alt text and navigation is keyboard accessible.
+- **Interactive Gallery:** Home page features a clickable, auto-cycling image gallery with transparent navigation.
+- **Live Weather Integration:** Visitor Hub page displays current weather conditions.
+- **Detailed Facilities Section:** Comprehensive information about available amenities with interactive image cycling.
+- **Contact System:** Streamlined contact form with essential information display.
+- **Rich Media Content:** Features multiple image galleries and interactive elements:
+  - Auto-cycling main gallery
+  - Clickable facility images with multiple views
+  - Interactive image modals
+- **Facility Highlights:**
+  - Multiple restroom and shower locations
+  - Lodging areas with various configurations
+  - Dedicated parking information
+  - Detailed map of the trail
+- **Visual Features:**
+  - High-quality 3D rendered facility images
+  - Responsive image galleries
+  - Modal image viewing
+  - Clean, modern interface
+- **Navigation Features:**
+  - Streamlined menu structure
+  - Easy access to key information
+  - Smooth transitions between sections
+- **Accessibility:** Screen reader friendly with proper image descriptions and semantic HTML.
 
 ## Setup Instructions
 
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
-3. Install dependencies (if using npm scripts):
-   ```
-   npm install
-   ```
-4. Start a local server (recommended for API and JS features):
-   ```
-   npm start
-   ```
-5. Open `src/index.html` or any page in your browser.
+3. No build process required - pure HTML, CSS, and JavaScript.
+4. Open `Source/index.html` in a web browser.
+5. For weather features, ensure you have internet access.
 
 ## Usage Notes
 
-- **Background Images:** Set per-page using inline styles on `<body>`.
-- **Weather API:** No API key needed for Open-Meteo; ensure internet access.
-- **Contact Form:** To send form data to your email, use a service like [Formspree](https://formspree.io).
-- **Gallery:** Images are loaded from the `images` folder and cycled automatically.
-- **Map:** Facilities and Visitor Info pages use Leaflet and OpenStreetMap for location display.
-- **Facility Images:** Click on facility images (restroom, pool, lodging, shower) to cycle through available photos.
-- **Popout Images:** Click on gallery or facility images to view them in a larger modal popout.
-- **Flip Cards:** On the Attraction page, cards flip on hover and images enlarge on click.
+- **Navigation:** Access facilities through the "Learn More" button on the homepage.
+- **Weather Display:** Automatic weather updates on the Visitor Hub page.
+- **Image Galleries:**
+  - Main gallery cycles automatically
+  - Click facility images to cycle through available views
+  - Click images to view larger versions in modal
+- **Facility Information:**
+  - Multiple views for restrooms, showers, and lodging areas
+  - Interactive cycling through facility images
+  - Detailed map available for orientation
+- **Responsive Design:**
+  - Works on mobile and desktop
+  - Adapts to different screen sizes
+  - Optimized image loading
 
 ## Contributing
 
