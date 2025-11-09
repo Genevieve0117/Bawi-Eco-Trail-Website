@@ -62,7 +62,7 @@ body.background-image::before {
 /* Ensure content stays above overlay */
 main {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 body {
@@ -90,6 +90,9 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 45px;
+    isolation: isolate;
 }
 
 /* Navigation */
@@ -226,6 +229,9 @@ footer {
     font-size: 0.7rem;
     min-height: 20px;
     line-height: 1;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    isolation: isolate;
+    backdrop-filter: blur(5px);
 }
 
 /* Prevent content from going under header/footer */
@@ -667,43 +673,48 @@ main .text-container li {
 /* Card Grid Styles */
 .card-grid-flip {
     display: grid;
-    grid-template-columns: repeat(3, 350px);
-    gap: 30px;
+    /* Responsive columns that will shrink and wrap as needed */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
     margin: 0 auto;
-    width: max-content;
+    width: 100%;
+    max-width: 1200px; /* keep the grid from growing beyond the text container */
     box-sizing: border-box;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    justify-items: center; /* center each cell's content */
     align-items: start;
 }
 
 @media (max-width: 1200px) {
     .card-grid-flip {
-        grid-template-columns: repeat(2, 350px);
-        padding: 25px;
-        gap: 25px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        padding: 20px;
+        gap: 20px;
     }
 }
 
 @media (max-width: 768px) {
     .card-grid-flip {
-        grid-template-columns: 350px;
-        padding: 20px;
-        gap: 20px;
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 16px;
     }
 }
 
 /* Flip Card Styles */
 .flip-card {
     background: transparent;
-    width: 350px;
+    width: 100%;
+    max-width: 350px; /* original intended card size */
     height: 220px;
     perspective: 1000px;
+    box-sizing: border-box;
+    overflow: hidden; /* prevent inner overflow from bleeding out */
 }
 
 .flip-card-inner {
@@ -742,4 +753,340 @@ main .text-container li {
     padding: 16px;
     text-align: center;
     font-size: 1.1rem;
+}
+
+/* Show More / Facilities grid styles */
+.show-more-btn {
+    display: inline-block;
+    margin: 16px auto 8px auto;
+    padding: 10px 18px;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.08s;
+}
+.show-more-btn:hover {
+    background: #388E3C;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.facilities-grid {
+    display: grid;
+    /* 2 columns x 4 rows to make images larger */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1400px; /* constrain grid width so images are sufficiently large */
+}
+.facilities-grid li {
+    background: rgba(255,255,255,0.95);
+    color: #333;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+@media (max-width: 1100px) {
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .facilities-grid {
+        grid-template-columns: 1fr;
+    }
+    .show-more-btn {
+        width: calc(100% - 40px);
+    }
+}
+
+/* Make the Available Facilities section wider so images are not squeezed */
+#availableFacilitiesSection .text-container {
+    max-width: 1200px; /* allow the facilities grid to expand */
+    width: 95%;
+    padding: 28px;
+}
+
+/* Ensure facility images keep their aspect ratio and fill their card */
+.facilities-grid li img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Slightly increase card min-height to accommodate images without squeezing */
+.facilities-grid li {
+    min-height: 160px;
+}
+
+/* In-page expand/collapse for Available Facilities: collapsed by default, expands in-page
+   and grows up to viewport height without taking the overlay role. */
+#availableFacilitiesSection {
+    max-height: calc(100vh - 120px); /* allow it to grow up to near-fullscreen */
+    overflow: visible;
+    transition: max-height 0.6s ease;
+}
+
+/* Collapsed state: hide by reducing max-height and clipping overflow */
+#availableFacilitiesSection.collapsed {
+    max-height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Ensure the text-container and grid take the available space when expanded */
+#availableFacilitiesSection .text-container {
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.facilities-grid {
+    height: 100%;
+    display: grid;
+    /* Keep 2 columns when expanded so layout becomes 2x4 */
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr; /* rows share available height when expanded */
+    gap: 28px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.facilities-grid li {
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.facilities-grid li img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* preserve aspect ratio without cropping */
+    display: block;
+}
+
+@media (max-width: 1100px) {
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .facilities-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto; /* allow natural height on very small screens */
+    }
+    #availableFacilitiesSection {
+        max-height: none; /* don't constrain on tiny screens */
+    }
+}
+
+/* Leaflet map overrides */
+.leaflet-control-container {
+    z-index: 1 !important;
+}
+
+.leaflet-routing-container {
+    z-index: 2 !important;
+    max-height: 500px;
+    overflow-y: auto;
+    margin-top: 10px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.leaflet-control {
+    z-index: 2 !important;
+}
+
+/* Header styles */
+.header-seal {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.header-seal img {
+    height: 32px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.header-seal span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Gallery styles */
+.gallery-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 900px;
+}
+
+.gallery-image {
+    width: 100%;
+    max-width: 900px;
+    max-height: 520px;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    display: block;
+    margin: auto;
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+    background: transparent;
+}
+
+.gallery-nav.left {
+    left: 0;
+}
+
+.gallery-nav.right {
+    right: 0;
+}
+
+/* Map styles */
+.map-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 700px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    margin: 32px auto 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Section spacing */
+.section-heading {
+    margin-top: 30px;
+}
+
+/* Contact page styles */
+.contact-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.contact-form-container {
+    max-width: 500px;
+}
+
+.contact-info-grid {
+    max-width: 320px;
+}
+
+/* Background styles */
+.cover-background {
+    background-image: url('../Seal/cover.png');
+}
+
+/* Statistics styles */
+.statistics-container {
+    padding: 24px 32px;
+    background: rgba(128, 128, 128, 0.85);
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    margin: 32px auto;
+    max-width: 1200px;
+    color: #f1f1f1;
+}
+
+.stats-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 24px;
+    border-radius: 12px;
+    margin: 20px auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1000px;
+}
+
+.stats-flex {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    justify-content: space-between;
+}
+
+.total-visitors {
+    text-align: center;
+    min-width: 250px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.total-visitors h3 {
+    color: #388E3C;
+    font-size: 1.8em;
+    margin-bottom: 12px;
+}
+
+.total-visitors p {
+    color: #333333;
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.chart-container {
+    flex: 1;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .stats-flex {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .total-visitors {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .chart-container {
+        width: 100%;
+        height: 250px;
+    }
 }
