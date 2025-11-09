@@ -9,15 +9,14 @@
 </head>
 <body>
     <header>
-        <div style="text-align:center;margin-bottom:4px;">
-            <img src="../Seal/Padre_Garcia_Seal.png" alt="Padre Garcia Seal" style="height:32px;width:auto;vertical-align:middle;margin-right:8px;">
-            <span style="display:inline-block;vertical-align:middle;font-size:1.5rem;font-weight:bold;color:#ffffff;">Welcome to Bawi Eco Trail</span>
+        <div class="header-seal">
+            <img src="../Seal/Padre_Garcia_Seal.png" alt="Padre Garcia Seal">
+            <span>Welcome to Bawi Eco Trail</span>
         </div>
         <nav class="navbar" aria-label="Main Navigation">
-            <a href="index.html" id="navbar__logo" aria-label="Bawi Eco Trail Home">Bawi Eco Trail</a>
+            <a href="easter.html" id="navbar__logo" aria-label="Bawi Eco Trail Home">Bawi Eco Trail</a>
             <ul class="navbar__menu">
                 <li class="navbar__item"><a class="navbar__links" href="index.html">Home</a></li>
-                <li class="navbar__item"><a class="navbar__links" href="facilities-and-amenities.html">Facilities & Amenities</a></li>
                 <li class="navbar__item"><a class="navbar__links" href="visitor-hub.html">Visitor Hub</a></li>
                 <li class="navbar__item"><a class="navbar__links" href="contact.html">Contact</a></li>
             </ul>
@@ -32,28 +31,29 @@
                         Discover the breathtaking views and rich biodiversity of the Bawi Eco Trail in Batangas.
                         Whether you're looking for adventure or a peaceful retreat, our trail offers something for everyone.
                     </p>
-                    <h2 style="margin-top: 30px;">Trail Highlights</h2>
+                    <h2 class="section-heading">Trail Highlights</h2>
                     <ul>
                         <li>Bawi River</li>
                         <li>Lushful flora and fauna</li>
                         <li>Photography spots</li>
                     </ul>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="facilities-and-amenities.html" class="show-more-btn" style="text-decoration: none; display: inline-block;">Learn More</a>
+                    </div>
                 </div>
                 <div class="text-container">
                     <h2>Gallery</h2>
-                    <div style="position:relative;display:inline-block;width:100%;max-width:900px;">
-                        <img id="gallery-img" src="../images/3.jpg" alt="Gallery Image" style="width:100%;max-width:900px;max-height:520px;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,0.12);display:block;margin:auto;">
-                        <div id="gallery-left" style="position:absolute;top:0;left:0;width:40%;height:100%;cursor:pointer;z-index:2;background:transparent;"></div>
-                        <div id="gallery-right" style="position:absolute;top:0;right:0;width:40%;height:100%;cursor:pointer;z-index:2;background:transparent;"></div>
+                    <div class="gallery-container">
+                        <img id="gallery-img" src="../images/3.jpg" alt="Gallery Image" class="gallery-image">
+                        <div id="gallery-left" class="gallery-nav left"></div>
+                        <div id="gallery-right" class="gallery-nav right"></div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
     <footer>
-        <div class="text-container">
-            <p class="website__rights">&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
-        </div>
+        <p class="website__rights">&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
     </footer>
     <script>
 const images = [
