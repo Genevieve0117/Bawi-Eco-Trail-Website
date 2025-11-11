@@ -1,108 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bawi Eco Trail</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js" defer></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bawi Eco Trail</title>
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/main.js" defer></script>
+        <style>
+          /* small overrides for hero layout that sit on top of existing CSS */
+          .hero { position: relative; padding: 120px 0 80px; background-size: cover; background-position: center; }
+          .hero-overlay { position:absolute; inset:0; background: rgba(0,0,0,0.28); }
+          .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; }
+          .hero-title { font-family: 'Montserrat', sans-serif; font-weight:800; font-size:2rem; letter-spacing:1px; }
+          .btn-cta { display:inline-block; margin-top:18px; background:#4CAF50; color:#fff; padding:12px 20px; border-radius:8px; text-decoration:none; }
+          .highlights { padding: 2.2rem 0; }
+          .cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+          .card { background: #fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+          .card-image { height:160px; background-size:cover; background-position:center; }
+          .card-body { padding:14px; text-align:center; }
+          .btn-small { background:#388E3C; color:#fff; padding:8px 12px; border-radius:20px; text-decoration:none; }
+          @media (min-width: 900px) { .hero-title { font-size:3rem; } }
+        </style>
 </head>
 <body>
-    <header>
-        <div class="header-seal">
-            <img src="../Seal/Padre_Garcia_Seal.png" alt="Padre Garcia Seal">
-            <span>Welcome to Bawi Eco Trail</span>
-        </div>
-        <nav class="navbar" aria-label="Main Navigation">
-            <a href="easter.html" id="navbar__logo" aria-label="Bawi Eco Trail Home">Bawi Eco Trail</a>
-            <ul class="navbar__menu">
-                <li class="navbar__item"><a class="navbar__links" href="index.html">Home</a></li>
-                <li class="navbar__item"><a class="navbar__links" href="visitor-hub.html">Visitor Hub</a></li>
-                <li class="navbar__item"><a class="navbar__links" href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="main-centered">
-            <div class="centered-content">
-                <div class="text-container">
-                    <h2>Explore the Beauty of Nature</h2>
-                    <p>
-                        Discover the breathtaking views and rich biodiversity of the Bawi Eco Trail in Batangas.
-                        Whether you're looking for adventure or a peaceful retreat, our trail offers something for everyone.
-                    </p>
-                    <h2 class="section-heading">Trail Highlights</h2>
-                    <ul>
-                        <li>Bawi River</li>
-                        <li>Lushful flora and fauna</li>
-                        <li>Photography spots</li>
-                    </ul>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="facilities-and-amenities.html" class="show-more-btn" style="text-decoration: none; display: inline-block;">Learn More</a>
-                    </div>
+        <!-- Header with seal + nav (kept from existing UI) -->
+        <header>
+                <div class="header-seal">
+                        <img src="../Seal/Padre_Garcia_Seal.png" alt="Padre Garcia Seal">
+                        <span>Welcome to Bawi Eco Trail</span>
                 </div>
-                <div class="text-container">
-                    <h2>Gallery</h2>
-                    <div class="gallery-container">
-                        <img id="gallery-img" src="../images/3.jpg" alt="Gallery Image" class="gallery-image">
-                        <div id="gallery-left" class="gallery-nav left"></div>
-                        <div id="gallery-right" class="gallery-nav right"></div>
-                    </div>
+                <nav class="navbar" aria-label="Main Navigation">
+                        <a href="easter.html" id="navbar__logo" aria-label="Bawi Eco Trail Home">Bawi Eco Trail</a>
+                        <ul class="navbar__menu">
+                                <li class="navbar__item"><a class="navbar__links" href="index.html">Home</a></li>
+                                <li class="navbar__item"><a class="navbar__links" href="visitor-hub.html">Visitor Hub</a></li>
+                                <li class="navbar__item"><a class="navbar__links" href="contact.html">Contact</a></li>
+                        </ul>
+                </nav>
+        </header>
+
+        <!-- Hero (merged in from user's new markup) -->
+        <section class="hero" style="background-image: url('../images/hero.jpg');">
+          <div class="hero-overlay"></div>
+          <div class="container hero-content">
+                <h1 class="hero-title">
+                  DISCOVER THE NATURAL
+                  <br />
+                  HEART OF PADRE GARCIA
+                </h1>
+          </div>
+        </section>
+
+        <main>
+                <!-- Existing main-centered content (kept) -->
+                <div class="main-centered">
+                        <div class="centered-content">
+                                <div class="text-container">
+                                        <h2>Explore the Beauty of Nature</h2>
+                                        <p>
+                                                Discover the breathtaking views and rich biodiversity of the Bawi Eco Trail in Batangas.
+                                                Whether you're looking for adventure or a peaceful retreat, our trail offers something for everyone.
+                                        </p>
+                                        <div style="text-align: center; margin-top: 20px;">
+                                                <a href="facilities-and-amenities.html" class="show-more-btn" style="text-decoration: none; display: inline-block;">Learn More</a>
+                                        </div>
+                                </div>
+                                <!-- Gallery preserved from existing UI -->
+                                <div class="text-container">
+                                        <h2>Gallery</h2>
+                                        <div id="gallery-frame">
+                                                <img id="gallery-img" src="../images/3.jpg" alt="Gallery Image" class="gallery-image">
+                                                <button id="prev-btn" aria-label="Previous">‹</button>
+                                                <button id="next-btn" aria-label="Next">›</button>
+                                        </div>
+                                </div>
+                        </div>
                 </div>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <p class="website__rights">&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
-    </footer>
-    <script>
+
+                <!-- Highlights cards merged from new markup (uses project's images) -->
+                <section class="highlights-container">
+                        <h2 class="section-heading text-center">HIGHLIGHTS</h2>
+                        <div class="highlights-grid">
+                                <div class="highlight-card">
+                                        <img src="../Texture/BAWI-RIVER.jpg" alt="Bawi River">
+                                        <h3>BAWI RIVER</h3>
+                                        <div style="text-align: center; margin-top: 20px;">
+                                                <a href="bawi-river.html" class="show-more-btn" style="text-decoration: none; display: inline-block;">Learn More</a>
+                                        </div>
+                                </div>
+                                <div class="highlight-card">
+                                        <img src="../Texture/MAMA-MARY.jpg" alt="Mama Mary Statue">
+                                        <h3>MAMA MARY STATUE</h3>
+                                       <div style="text-align: center; margin-top: 20px;">
+                                                <a href="mama-mary.html" class="show-more-btn" style="text-decoration: none; display: inline-block;">Learn More</a>
+                                        </div>
+                                </div>
+                                <div class="highlight-card">
+                                        <img src="../Texture/HEART-POOL.jpg" alt="Heart Pool">
+                                        <h3>HEART POOL</h3>
+                                       <div style="text-align: center; margin-top: 20px;">
+                                                <a href="heart-pool.html" class="show-more-btn" style="text-decoration: none; display: inline-block;">Learn More</a>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+        </main>
+
+        <footer>
+                <p class="website__rights">&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
+        </footer>
+
+        <!-- Gallery script preserved and slightly adapted to use nav buttons -->
+        <script>
 const images = [
-    "../images/3.jpg",
-    "../images/4.jpg",
-    "../images/5.jpg",
-    "../images/6.jpg",
-    "../images/7.jpg",
-    "../images/8.jpg",
-    "../images/9.jpg",
-    "../images/10.jpg",
-    "../images/12.jpg",
-    "../images/13.jpg",
-    "../images/14.jpg"
+        "../images/3.jpg",
+        "../images/4.jpg",
+        "../images/5.jpg",
+        "../images/6.jpg",
+        "../images/7.jpg",
+        "../images/8.jpg",
+        "../images/9.jpg",
+        "../images/10.jpg",
+        "../images/12.jpg",
+        "../images/13.jpg",
+        "../images/14.jpg"
 ];
 let current = 0;
 const img = document.getElementById('gallery-img');
-const left = document.getElementById('gallery-left');
-const right = document.getElementById('gallery-right');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
 
 let interval = null;
 const delay = 5000; // 5 seconds
 
 function showImage(idx) {
-    img.src = images[idx];
+        if (!img) return;
+        img.style.opacity = 0;
+        setTimeout(() => { img.src = images[idx]; img.style.opacity = 1; }, 200);
 }
 
 function startInterval() {
-    if (interval) clearInterval(interval);
-    interval = setInterval(() => {
-        current = (current + 1) % images.length;
-        showImage(current);
-    }, delay);
+        if (interval) clearInterval(interval);
+        interval = setInterval(() => {
+                current = (current + 1) % images.length;
+                showImage(current);
+        }, delay);
 }
 
-left.onclick = () => {
-    current = (current - 1 + images.length) % images.length;
-    showImage(current);
-    startInterval(); 
-};
-
-right.onclick = () => {
-    current = (current + 1) % images.length;
-    showImage(current);
-    startInterval(); 
-};
+if (prevBtn) prevBtn.addEventListener('click', () => {
+        current = (current - 1 + images.length) % images.length;
+        showImage(current);
+        startInterval();
+});
+if (nextBtn) nextBtn.addEventListener('click', () => {
+        current = (current + 1) % images.length;
+        showImage(current);
+        startInterval();
+});
 
 showImage(current);
 startInterval();
-</script>
+        </script>
 </body>
 </html>
