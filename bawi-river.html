@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bawi Eco Trail</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+    <style>
+        /* Full-page image section for single-image pages */
+        .full-image-section {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: calc(100vh - 140px); /* leave space for header/footer */
+            overflow: hidden;
+        }
+        .full-image-section .full-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .full-image-section .bottom-text {
+            position: relative;
+            z-index: 2;
+            background: rgba(0,0,0,0.45);
+            color: #fff;
+            padding: 14px 20px;
+            margin: 0 20px 30px;
+            max-width: 1100px;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .full-image-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.15));
+            z-index: 1;
+        }
+        header, footer { position: relative; z-index: 3; }
+        @media (max-width: 600px) {
+            .full-image-section { height: calc(100vh - 120px); }
+            .full-image-section .bottom-text { font-size: 0.95rem; padding: 12px 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-seal">
+            <img src="../Seal/Barangay_Bawi_Seal.png" alt="Barangay Bawi Seal">
+            <span>Barangay Bawi</span>
+        </div>
+        <nav class="navbar">
+            <a href="easter.html" id="navbar__logo">Bawi Eco Trail</a>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a class="navbar__links" href="index.html">Home</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="visitor-hub.html">Visitor Hub</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="main-centered" aria-labelledby="contact-title">
+            <div class="contact-layout">
+                <div class="centered-box contact-form-container">
+                    <h2 id="contact-title">Contact Us</h2>
+                    <p>If you have any questions or feedback, please fill out the form below:</p>
+                    <form action="https://formspree.io/f/xjkaobdo" method="POST" class="contact-form" autocomplete="off">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+                <div class="card-grid contact-info-grid">
+                    <div class="card">
+                        <h3>Email</h3>
+                        <p><a href="mailto:bawiecotrail.official@gmail.com">bawiecotrail.official@gmail.com</a></p>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+639456311523">+63 945 631 1523</a></p>
+                        <h3>Location</h3>
+                        <p>Brgy. Bawi, Batangas, Philippines</p>
+                        <h3>Brgy. Bawi Hall</h3>
+                        <p>Brgy. Captain Andy Villanueva<br>
+                        <a href="tel:+639266561419">0926-656-1419</a></p>
+                        <h3>Hospital Emergency</h3>
+                        <p>Dr. Romeo Isana<br>
+                            <section class="full-image-section" aria-label="Bawi River">
+                                <img src="../Texture/BAWI-RIVER.jpg" alt="Bawi River" class="full-image">
+                                <div class="bottom-text">A peaceful spring-fed surrounded by lush greenery, offering a cool and relaxing escape in nature, listen to the soothing sound of the water, and enjoy the scenery.</div>
+                            </section>
