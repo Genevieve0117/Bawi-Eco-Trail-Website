@@ -3,14 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facilities & Amenities - Bawi Eco Trail</title>
+    <title>FAQ - Bawi Eco Trail</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
-    <!-- Leaflet CSS & JS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .faq-header {
+            background-color: #f9f9f9;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            user-select: none;
+            transition: background-color 0.3s ease;
+            color: green;
+        }
+
+        [data-theme="dark"] .faq-header {
+            background-color: #1a1f2e;
+            color: #00ff00;
+            border-color: #333333;
+        }
+
+        .faq-header:hover {
+            background-color: #f0f0f0;
+        }
+
+        [data-theme="dark"] .faq-header:hover {
+            background-color: #252d40;
+        }
+
+        .faq-header.active {
+            background-color: #e8f4f8;
+        }
+
+        [data-theme="dark"] .faq-header.active {
+            background-color: #2d3a52;
+        }
+
+        .faq-toggle {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+            background-color: #ffffff;
+            color: green !important;
+        }
+
+        .faq-content.active {
+            max-height: 2000px;
+            padding: 15px;
+        }
+
+        .faq-content p, .faq-content ol, .faq-content ul, .faq-content li {
+            color: green !important;
+        }
+
+        .text-container h1 {
+            text-align: left;
+        }
+    </style>
 </head>
-<body style="background: #FFF7EC; margin:0; min-height:100vh;">
+<body style="margin:0; min-height:100vh;">
     <header>
         <div style="display: flex; align-items: center;">
             <img src="../Seal/Barangay_Bawi_Seal.png" alt="Barangay Bawi Seal" style="height:56px;width:auto;vertical-align:middle;margin-right:16px;">
@@ -18,314 +93,276 @@
         </div>
         <nav class="navbar">
             <a href="index.html" id="navbar__logo">Bawi Eco Trail</a>
-            <ul class="navbar__menu">
+                        <ul class="navbar__menu">
                 <li class="navbar__item"><a class="navbar__links" href="index.html">Home</a></li>
                 <li class="navbar__item"><a class="navbar__links" href="visitor-hub.html">Visitor Hub</a></li>
                 <li class="navbar__item"><a class="navbar__links" href="contact.html">Contact</a></li>
+                <li class="navbar__item"><a class="navbar__links" href="FAQ.html">FAQ's</a></li>
             </ul>
+        </nav>
         </nav>
     </header>
     <main>
         <div class="centered-content">
-            <!-- About Section -->
             <section>
-                <div class="text-container">
-                    <h2>About Bawi Eco Trail</h2>
-                    <p>The Bawi Eco Trail is a stunning natural attraction located in Batangas, offering visitors a unique opportunity to explore the rich biodiversity and scenic landscapes of the region. The trail is designed for eco-tourism, promoting environmental awareness and conservation.</p><br>
-                    <h2>Main Attractions</h2>
-                    <ul>
-                        <li>Shrines</li>
-                        <li>Clean River</li>
-                        <li>Romantic Scenery</li>
-                        <li>Fresh Mountain Water</li>
-                    </ul>
-                </div>
-            </section>
+                <div class="text-container" style="text-align: left;">
+                    <h1>Frequently Asked Questions</h1>
 
-            
-            <!-- History Section -->
-            <section>
-                <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; flex-wrap: wrap;">
-                    <div class="centered-box" style="max-width: 500px; min-width: 280px; height: 400px; display: flex; flex-direction: column; justify-content: center; padding: 1em;">
-                        <h2>History and Significance</h2>
-                        <p>
-                            Bawi Eco Trail was developed by the local government of Padre Garcia as part of its effort to promote eco-tourism and preserve natural water sources. What started as a simple bukal or spring used by residents gradually turned into a well-loved destination and care for the encironment. Bawi Eco Trail holds both environmental and cultural value. It encourages locals to protect their natural resources while providing livelihood opportunities through tourism.
-                        </p>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>1. Is there a reservation fee for the cottages?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, to secure your cottage, a reservation is required. You can book your spot easily through our official booking form on this website.</p>
+                        </div>
                     </div>
-                    <div class="centered-box" style="max-width: 500px; min-width: 280px; height: 400px; padding: 1em;">
-                        <p>
-                            The place also serves as a peaceful retreat that strengthens faith, family, ties and appreciation for nature's beauty, reflecting the true spirit of Padre Garcia. Tourism Establishments as stewards of visitor experience and service, the management and operators benefit from a practical framework for improving visitor experience, adopting smart tools, upgrading facilities, and professionalizing the workforce. and Environmental Conservation as the trail serves as a model for sustainable eco-tourism, demonstrating how natural attractions can be preserved while providing economic benefits to the community.
-                        </p>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Flip Cards for Major Attractions -->
-            <section>
-                <div class="text-container">
-                    <h2>Featured Attractions</h2>
-                    <div class="card-grid-flip">
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Heart Pool.png" alt="Card Image 1" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Heart-Shaped Pool – A lovely heart-inspired pool that captures the essence of love and relaxation, perfect for couples, families, and fun photo moments.</p>
-                            </div>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>2. How to I get to Bawi Eco Trail by public transport?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>We're excited to have you! Here are the best ways to commute to our location in Padre Garcia, Batangas:</p>
+                            <p><strong>From Manila (e.g., Cubao, Buendia, PITX):</strong></p>
+                            <ol>
+                                <li>Take any Batangas-bound bus (like JAM Liner or ALPS) and ask for a ticket to Rosario, Batangas. (Some routes may require a transfer in Lipa City, but direct trips to Rosario are available).</li>
+                                <li>Once you arrive at the Rosario bus terminal, take a jeepney or tricycle to the Padre Garcia town proper (Poblacion).</li>
+                                <li>From the town proper, hire a tricycle and ask the driver to take you directly to Bawi Eco Trail in Barangay Bawi.</li>
+                            </ol>
+                            <p><strong>From Batangas City (e.g., Batangas Grand Terminal):</strong></p>
+                            <ol>
+                                <li>Take a bus or jeepney bound for Lipa City.</li>
+                                <li>From Lipa, take another bus or jeepney to the Rosario bus terminal.</li>
+                                <li>Once in Rosario, take a jeepney or tricycle to the Padre Garcia town proper.</li>
+                                <li>From there, hire a tricycle to take you to Bawi Eco Trail.</li>
+                            </ol>
                         </div>
                     </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Rectangle Pool.png" alt="Card Image 2" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Rectangle-Shaped pool – Take a dip in the refreshing natural spring water that keeps you cool and energized while enjoying the scenic surroundings.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Mama Mary Statue.png" alt="Card Image 3" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Mama Mary Statue – A serene spot for prayer and reflection, offering peace and comfort in the heart of nature.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Park.png" alt="Card Image 4" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Small Eco Park – A cozy green space at the center of the trail, ideal for picnics, rest, and nature appreciation.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/Heart swing.png" alt="Card Image 5" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Heart-Shaped Swing – A picture-perfect attraction where visitors can relax, take photos, and enjoy the romantic charm of the eco trail.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../3D/River side.png" alt="Card Image 6" style="width:100%;height:100%;object-fit:cover;">
-                            </div>
-                            <div class="flip-card-back">
-                                <p>Riverside Area – A tranquil river flowing along the trail where guests can unwind, listen to the soothing sound of water, and enjoy the natural scenery.</p>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Show More button to toggle facilities grid -->
-                    <button id="toggleFacilities" class="show-more-btn" aria-expanded="false" aria-controls="availableFacilitiesSection">Show More</button>
-                </div>
-            </section>
 
-            <!-- Available Facilities Section (collapsed by default, toggled by Show More) -->
-            <section id="availableFacilitiesSection" class="collapsed">
-                <div class="text-container">
-                    <h2>Available Facilities</h2>
-                    <ul class="facilities-grid">
-                        <li>
-                            <strong>Entrance & Exit</strong> A proper entrance and exit, with a bulletin map and a QR for the website.
-                            <br>
-                            <img src="../3D/Visitors Info - add image on container.png" alt="Store Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
-                        </li>
-                        <li>
-                            <strong>Restrooms</strong> Clean and accessible restrooms are available throughout the trail.
-                            <br>
-                            <img
-                                src="../3D/Restroom 1.png"
-                                alt="Restroom Placeholder"
-                                id="restroom-img"
-                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="cycleRestroomImage()"
-                            >
-                        </li>
-                        <li>
-                            <strong>Shower Area</strong> Used to cleanse before using the pools.
-                            <br>
-                            <img
-                                src="../3D/Shower 1.png"
-                                alt="Shower Area Placeholder"
-                                id="shower-img"
-                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="cycleShowerImage()"
-                            >
-                        </li>
-                        <li>
-                            <strong>Lodging</strong> Designated resting and eating areas with tables and benches for visitors to enjoy.
-                            <br>
-                            <img
-                                src="../3D/Lodging 1 Large.png"
-                                alt="Lodging Placeholder"
-                                id="lodging-img"
-                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="cycleLodgingImage()"
-                            >
-                        </li>
-                        <li>
-                            <strong>Parking</strong> There is no designated parking, but locals advised that the bridge could be a Parking Area.
-                            <br>
-                            <img
-                                src="../3D/Parking 1.png"
-                                alt="Parking Placeholder"
-                                id="parking-img"
-                                style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="cycleParkingImage()"
-                            >
-                        </li>
-                        <li>
-                            <strong>Small Store</strong> Provides essential goods and refreshments to visitors.
-                            <br>
-                            <img src="../3D/Small Store.png" alt="Store Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
-                        </li>
-                        <li>
-                            <strong>Patio</strong> A relaxing outdoor space for dining, lounging, and enjoying scenic resort views.
-                            <br>
-                            <img src="../3D/Patio Set.png" alt="Patio Placeholder" style="margin:10px 0; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;">
-                        </li>
-                        <li style="text-align: center;">
-                            <strong>Overall Map</strong>
-                            <br>
-                            <img
-                                src="../Texture/Map.png"
-                                alt="Map"
-                                id="overall-map-img"
-                                style="margin:10px auto; border-radius:8px; max-width:100%; height:auto; display:block; cursor:pointer;"
-                                onclick="showMapModal()"
-                            >
-                        </li>
-                    </ul>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>3. Is the place PWD and senior citizen accessible?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, we have made our main pathways and facilities accessible for senior citizens and persons with disabilities.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>4. Is Bawi Eco Trail Pet Friendly?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, we love our furry friends! You may bring your pets as long as they are leashed and you are responsible for cleaning up after them.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>5. Is there a strong internet service in Bawi Eco Trail?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, the area has a stable mobile signal, so you can stay connected and share your moments!</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>6. Is there Parking free?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, we have a secured parking area for our guests. The parking fee is:</p>
+                            <ul>
+                                <li>Cars/Vans: ₱20</li>
+                                <li>Motorcycles: ₱10</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>7. Does Bawi Eco Trail accept card payment?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>We accept Cash, GCash, and PayMaya for all on-site payments (entrance fees, cottages, and food stalls). We do not accept credit or debit cards at this time.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>8. Do I need to pay an entrance fee if I already booked a cottage?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, the entrance fee is separate from all cottage booking fees. All guests entering the eco-trail are required to pay the standard entrance fee.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>9. Is there a Cancellation Policy?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>All confirmed bookings are final and non-refundable.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>10. Is there an entrance fee for children?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>We welcome adventurers of all ages! Children 5 years old and below can enter for free.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>11. When is Bawi Eco Trail open?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>We are open daily from 8:00 AM to 5:00 PM.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>12. Can I make a reservation via phone call?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, you can! For assistance with your booking or to make a reservation over the phone, please call us at +639266561419.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>13. How can I confirm the reservations?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p><strong>If you booked online:</strong> After submitting our booking form, you will receive a confirmation email or message with your reservation details and payment instructions.</p>
+                            <p><strong>If you booked by phone:</strong> Our staff will confirm your details and provide a reference number during the call.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>14. Can I bring my own food and drinks?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, you are welcome to bring your own food and drinks to enjoy a picnic with your family and friends. We just ask that you help us keep the park clean by practicing "Clean As You Go."</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>15. Are there dining options in Bawi Eco Trail?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes! If you don't want to bring your own food, we have several food stalls on-site offering a variety of snacks and refreshments.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>16. Can I stay overnight?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>To help preserve the natural beauty of the area, Bawi Eco Trail is currently a day-use facility only. We do not offer overnight accommodations.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>17. Is there electricity in the cottages?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes! Our cottages are eco-friendly and equipped with solar-powered charging ports for your basic charging needs (like mobile phones and power banks).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>18. Is it safe to swim in the river?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Your safety is our priority. Swimming is generally safe and allowed under two conditions:</p>
+                            <ol>
+                                <li>The weather is good, and the water level is safe.</li>
+                                <li>Our security personnel and lifeguards on-duty have given a "go" signal.</li>
+                            </ol>
+                            <p>Please always check with our staff before entering the water.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>19. Is the natural spring water drinkable in Bawi Eco Trail?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Yes, the water from our natural spring is potable and safe to drink.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <span>20. Does Bawi Eco Trail offer activities besides swimming?</span>
+                            <span class="faq-toggle">▼</span>
+                        </div>
+                        <div class="faq-content">
+                            <p>Currently, our main attractions are swimming and relaxing by the river. We encourage guests to enjoy the natural scenery, have a picnic, and unwind in our cottages.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </main>
-
-    <!-- Modals -->
-    <div id="map-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
-        <img id="modal-map-img" src="../Texture/Map.png" alt="Map Enlarged" style="max-width:90vw;max-height:90vh;border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.25);background:#fff;">
-    </div>
-    <div id="card-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
-        <img id="modal-img" src="" alt="Enlarged Card Image" style="max-width:90vw;max-height:90vh;border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.25);background:#fff;">
-    </div>
 
     <footer>
         <p class="website__rights">&copy; 2025 Bawi Eco Trail. All rights reserved.</p>
     </footer>
 
     <script>
-    // Map modal functionality
-    function showMapModal() {
-        document.getElementById('map-modal').style.display = 'flex';
-    }
-    document.getElementById('map-modal').onclick = function() {
-        this.style.display = 'none';
-    };
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const content = faqItem.querySelector('.faq-content');
+                const toggle = this.querySelector('.faq-toggle');
+                const isActive = content.classList.contains('active');
 
-    // Flip card modal functionality
-    document.querySelectorAll('.flip-card').forEach(function(card) {
-        card.onclick = function(e) {
-            // Only enlarge if the click is on the front side
-            const img = card.querySelector('.flip-card-front img');
-            if (img && e.target.closest('.flip-card-front')) {
-                document.getElementById('modal-img').src = img.src;
-                document.getElementById('card-modal').style.display = 'flex';
-            }
-        };
-    });
-    document.getElementById('card-modal').onclick = function() {
-        this.style.display = 'none';
-        document.getElementById('modal-img').src = '';
-    };
+                // Close all other open items
+                document.querySelectorAll('.faq-content.active').forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                        item.parentElement.querySelector('.faq-header').classList.remove('active');
+                        item.parentElement.querySelector('.faq-toggle').classList.remove('active');
+                    }
+                });
 
-    // Pool image cycling
-    const poolImages = [
-        "../3D/Heart Pool.png",
-        "../3D/Rectangle Pool.png"
-    ];
-    let poolIndex = 0;
-    function cyclePoolImage() {
-        poolIndex = (poolIndex + 1) % poolImages.length;
-        document.getElementById('swimming-pool-img').src = poolImages[poolIndex];
-    }
-
-    // Restroom image cycling
-    const restroomImages = [
-        "../3D/Restroom 1.png",
-        "../3D/Restroom 2.png",
-        "../3D/Restroom outside.png"
-    ];
-    let restroomIndex = 0;
-    function cycleRestroomImage() {
-        restroomIndex = (restroomIndex + 1) % restroomImages.length;
-        document.getElementById('restroom-img').src = restroomImages[restroomIndex];
-    }
-
-    // Lodging image cycling
-    const lodgingImages = [
-        "../3D/Lodging 1 Large.png",
-        "../3D/Lodging 2 Small.png"
-    ];
-    let lodgingIndex = 0;
-    function cycleLodgingImage() {
-        lodgingIndex = (lodgingIndex + 1) % lodgingImages.length;
-        document.getElementById('lodging-img').src = lodgingImages[lodgingIndex];
-    }
-
-    // Shower image cycling
-    const showerImages = [
-        "../3D/Shower 1.png",
-        "../3D/Shower 2.png"
-    ];
-    let showerIndex = 0;
-    function cycleShowerImage() {
-        showerIndex = (showerIndex + 1) % showerImages.length;
-        document.getElementById('shower-img').src = showerImages[showerIndex];
-    }
-
-    // Parking image cycling
-    const parkingImages = [
-        "../3D/Parking 1.png",
-        "../3D/Parking 2.png"
-    ];
-    let parkingIndex = 0;
-    function cycleParkingImage() {
-        parkingIndex = (parkingIndex + 1) % parkingImages.length;
-        document.getElementById('parking-img').src = parkingImages[parkingIndex];
-    }
-
-    // Toggle Available Facilities section
-    (function() {
-        const btn = document.getElementById('toggleFacilities');
-        const section = document.getElementById('availableFacilitiesSection');
-        if (!btn || !section) return;
-
-        btn.addEventListener('click', function() {
-            const isCollapsed = section.classList.toggle('collapsed');
-            // aria-expanded should reflect expanded state
-            btn.setAttribute('aria-expanded', String(!isCollapsed));
-            btn.textContent = isCollapsed ? 'Show More' : 'Show Less';
-
-            // Smooth scroll: when expanded, scroll the section into view; when collapsed, scroll back to cards
-            if (!isCollapsed) {
-                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                const cards = document.querySelector('.card-grid-flip');
-                if (cards) cards.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+                // Toggle current item
+                content.classList.toggle('active');
+                this.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
         });
-    })();
     </script>
 </body>
 </html>
