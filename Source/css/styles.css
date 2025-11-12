@@ -23,6 +23,25 @@
     --flip-card-back-bg: #388E3C;
 }
 
+[data-theme="dark"] {
+    --bg-color: #111822;
+    --text-color: #00ff00;
+    --container-bg: #1a1f2e;
+    --stats-box-bg: #1f2533;
+    --card-bg: #1a1f2e;
+    --link-color: #00ff00;
+    --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    --header-text: #ffffff;
+    --qr-section-bg: rgba(17, 24, 34, 0.9);
+    --price-summary-bg: rgba(26, 31, 46, 0.95);
+    --weather-card-bg: #1a1f2e;
+    --weather-card-border: #333333;
+    --chart-text: #00ff00;
+    --chart-grid: #333333;
+    --centered-box-bg: rgba(50, 50, 50, 0.8);
+    --flip-card-back-bg: #00ff00;
+}
+
 /* Reset and base styles */
 * {
     box-sizing: border-box;
@@ -66,8 +85,8 @@ main {
 }
 
 body {
-    background: #EDE8D0;
-    color: #333333;
+    background: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
     padding-top: 45px;   /* Reduced header height */
     padding-bottom: 30px; /* Reduced footer height */
@@ -433,6 +452,11 @@ main .text-container li {
     text-align: center;
 }
 
+[data-theme="dark"] .highlight-card {
+    background: rgba(26, 31, 46, 0.95);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
 .highlight-card:hover {
     transform: translateY(-5px);
 }
@@ -451,9 +475,17 @@ main .text-container li {
     font-size: 1.5rem;
 }
 
+[data-theme="dark"] .highlight-card h3 {
+    color: #00ff00;
+}
+
 .highlight-card p {
     color: #666;
     margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .highlight-card p {
+    color: #00ff00;
 }
 
 .learn-more-btn {
@@ -829,9 +861,30 @@ main .text-container li {
     border-radius: 8px;
 }
 
+[data-theme="dark"] .facilities-grid li img {
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+}
+
 /* Slightly increase card min-height to accommodate images without squeezing */
 .facilities-grid li {
     min-height: 160px;
+}
+
+[data-theme="dark"] .facilities-grid li {
+    background: rgba(26, 31, 46, 0.8);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+}
+
+[data-theme="dark"] .facilities-grid li strong {
+    color: #00ff00;
+}
+
+[data-theme="dark"] .facilities-grid li p {
+    color: #00ff00;
 }
 
 /* In-page expand/collapse for Available Facilities: collapsed by default, expands in-page
@@ -853,6 +906,25 @@ main .text-container li {
     width: 100%;
     max-width: 1200px;
     box-sizing: border-box;
+}
+
+[data-theme="dark"] #availableFacilitiesSection .text-container {
+    background: rgba(128, 128, 128, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    color: #00ff00;
+}
+
+[data-theme="dark"] #availableFacilitiesSection h2 {
+    color: #00ff00;
+}
+
+[data-theme="dark"] #availableFacilitiesSection .text-container strong {
+    color: #00ff00;
+}
+
+[data-theme="dark"] #availableFacilitiesSection .text-container p {
+    color: #00ff00;
 }
 
 .facilities-grid {
