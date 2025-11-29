@@ -1,5 +1,5 @@
 :root {
-    --light-bg: #EDE8D0;
+    --light-bg: #C5D4C4;
     --dark-bg: #0E1A26;
     --green-text: #62C281;
 }
@@ -25,7 +25,7 @@
 
 [data-theme="dark"] {
     --bg-color: #111822;
-    --text-color: #00ff00;
+    --text-color: #FFFFFF;
     --container-bg: #1a1f2e;
     --stats-box-bg: #1f2533;
     --card-bg: #1a1f2e;
@@ -36,7 +36,7 @@
     --price-summary-bg: rgba(26, 31, 46, 0.95);
     --weather-card-bg: #1a1f2e;
     --weather-card-border: #333333;
-    --chart-text: #00ff00;
+    --chart-text: #FFFFFF;
     --chart-grid: #333333;
     --centered-box-bg: rgba(50, 50, 50, 0.8);
     --flip-card-back-bg: #00ff00;
@@ -54,7 +54,7 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background: #EDE8D0;
+    background: #C5D4C4;
 }
 
 /* Background image styles */
@@ -93,6 +93,12 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+/* Force page background for light mode across all pages */
+[data-theme="light"] body {
+    background: #C5D4C4 !important;
+    background-color: #C5D4C4 !important;
 }
 
 /* Fixed Header */
@@ -486,6 +492,57 @@ main .text-container li {
 
 [data-theme="dark"] .highlight-card p {
     color: #00ff00;
+}
+
+/* Make dark-mode container elements use the same appearance as .highlight-card */
+[data-theme="dark"] .text-container,
+[data-theme="dark"] .centered-box,
+[data-theme="dark"] .card,
+[data-theme="dark"] .qr-section,
+[data-theme="dark"] .rules-container,
+[data-theme="dark"] .price-summary,
+[data-theme="dark"] .weather-card,
+[data-theme="dark"] .stats-box,
+[data-theme="dark"] .facilities-grid li,
+[data-theme="dark"] #gallery-frame,
+[data-theme="dark"] .chart-container,
+[data-theme="dark"] .gallery-container,
+[data-theme="dark"] .gallery-image,
+[data-theme="dark"] .card-grid-flip,
+[data-theme="dark"] .map-container,
+[data-theme="dark"] .statistics-container,
+[data-theme="dark"] .total-visitors {
+    background: rgba(26, 31, 46, 0.95) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* Make headings and paragraphs inside these containers match .highlight-card in dark mode */
+[data-theme="dark"] .text-container h1,
+[data-theme="dark"] .text-container h2,
+[data-theme="dark"] .text-container h3,
+[data-theme="dark"] .text-container h4,
+[data-theme="dark"] .text-container p,
+[data-theme="dark"] .centered-box h1,
+[data-theme="dark"] .centered-box h2,
+[data-theme="dark"] .centered-box h3,
+[data-theme="dark"] .centered-box p,
+[data-theme="dark"] .card h1,
+[data-theme="dark"] .card h2,
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card p,
+[data-theme="dark"] .price-summary h3,
+[data-theme="dark"] .price-summary p,
+[data-theme="dark"] .rules-container h3,
+[data-theme="dark"] .rules-container p,
+[data-theme="dark"] .weather-card h3,
+[data-theme="dark"] .weather-card p,
+[data-theme="dark"] .stats-box h3,
+[data-theme="dark"] .stats-box p,
+[data-theme="dark"] .facilities-grid li p {
+    color: #00ff00 !important;
 }
 
 .learn-more-btn {
@@ -1116,10 +1173,19 @@ main .text-container li {
     justify-content: space-between;
 }
 
+/* Give the chart more horizontal room and keep the visitor count compact */
+.stats-flex > .total-visitors {
+    flex: 0 0 220px;
+}
+
+.stats-flex > .chart-container {
+    flex: 1 1 0;
+}
+
 .total-visitors {
     text-align: center;
     min-width: 250px;
-    padding: 24px;
+    padding: 16px;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -1127,8 +1193,8 @@ main .text-container li {
 
 .total-visitors h3 {
     color: #388E3C;
-    font-size: 1.8em;
-    margin-bottom: 12px;
+    font-size: 1.25em;
+    margin-bottom: 8px;
 }
 
 .total-visitors p {
@@ -1138,12 +1204,36 @@ main .text-container li {
 }
 
 .chart-container {
-    flex: 1;
-    height: 300px;
+    flex: 1 1 0;
+    height: 420px;
     background: rgba(255, 255, 255, 0.95);
-    padding: 16px;
+    padding: 18px;
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent chart canvas from overflowing its container. Make the container
+   a clipping box and ensure the canvas scales to fit. Chart.js sets inline
+   width/height; these rules force it to respect the container width. */
+.chart-container {
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-container canvas {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+}
+
+@media (max-width: 1000px) {
+    .chart-container {
+        height: 260px;
+        padding: 12px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1155,10 +1245,187 @@ main .text-container li {
     .total-visitors {
         width: 100%;
         min-width: unset;
+        padding: 12px;
+    }
+
+    .stats-flex > .total-visitors {
+        flex: none;
+        width: 100%;
     }
 
     .chart-container {
         width: 100%;
-        height: 250px;
+        height: 260px;
     }
+}
+
+/* Final strong override: ensure every dark-mode text/fill/stroke is white */
+[data-theme="dark"] *,
+[data-theme="dark"] *::before,
+[data-theme="dark"] *::after {
+    color: #FFFFFF !important;
+}
+
+[data-theme="dark"] svg,
+[data-theme="dark"] svg * {
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+/* Leaflet map: keep map, controls, popups, and routing UI unchanged in dark mode */
+[data-theme="dark"] #map,
+[data-theme="dark"] .map-container,
+[data-theme="dark"] .leaflet-container,
+[data-theme="dark"] .leaflet-control,
+[data-theme="dark"] .leaflet-control *,
+[data-theme="dark"] .leaflet-popup,
+[data-theme="dark"] .leaflet-popup-content,
+[data-theme="dark"] .leaflet-routing-container,
+[data-theme="dark"] .leaflet-routing-container * {
+    color: initial !important;
+    background: initial !important;
+    box-shadow: initial !important;
+    border-radius: initial !important;
+}
+
+/* Ensure SVGs inside the map keep their original fills/strokes */
+/* Ensure Leaflet overlay shapes use stroke (no fill) so routing lines render correctly */
+.leaflet-overlay-pane path,
+.leaflet-overlay-pane polygon,
+.leaflet-overlay-pane polyline,
+.leaflet-overlay-pane circle,
+.leaflet-overlay-pane rect {
+    fill: none !important;
+    stroke: initial !important;
+    stroke-linejoin: round !important;
+    stroke-linecap: round !important;
+}
+
+/* Be explicit for routing machine polylines so their inline stroke colors are used */
+.leaflet-routing-container svg path,
+.leaflet-routing-container svg polyline,
+.leaflet-routing-container svg polygon,
+.leaflet-routing-container .leaflet-routing-line,
+.leaflet-routing-container .leaflet-routing-alt-line {
+    fill: none !important;
+    stroke:  initial !important;
+}
+
+
+/* Restore a visible, neutral background for the routing UI so it's readable on the map
+   in both light and dark modes. This overrides previous "initial" exceptions for clarity. */
+.leaflet-routing-container,
+.leaflet-routing-container * {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #208000 !important;
+}
+
+.leaflet-routing-container {
+    padding: 8px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+    max-height: 520px !important;
+    overflow: auto !important;
+}
+
+/* Keep interactive controls (links/buttons) readable */
+.leaflet-routing-container a,
+.leaflet-routing-container button {
+    color: #000 !important;
+}
+
+/* Make same styling explicit for dark theme routing container as well */
+[data-theme="dark"] .leaflet-routing-container,
+[data-theme="dark"] .leaflet-routing-container * {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #000 !important;
+}
+
+/* Ensure routing UI backgrounds (which we set earlier) remain neutral for the map */
+/* removed conflicting reset to ensure routing container keeps the readable background */
+
+/* Ensure map tiles (raster) are shown without overlays from container styles */
+[data-theme="dark"] .map-container {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* Explicitly style routing polylines so the route is visible and green/outlined in both themes */
+.leaflet-routing-line {
+    stroke: #208000 !important; /* route middle line (matches JS) */
+    stroke-width: 6 !important;
+    fill: none !important;
+    stroke-linejoin: round !important;
+    stroke-linecap: round !important;
+}
+
+.leaflet-routing-alt-line {
+    stroke: rgba(0,0,0,0.18) !important; /* subtle darker outline */
+    stroke-width: 10 !important;
+    fill: none !important;
+    stroke-linejoin: round !important;
+    stroke-linecap: round !important;
+}
+
+/* Some versions use polyline elements for the routing lines; style them too */
+.leaflet-routing-container svg polyline,
+.leaflet-overlay-pane polyline {
+    fill: none !important;
+    stroke: #208000 !important;
+    stroke-width: 6 !important;
+    stroke-linejoin: round !important;
+    stroke-linecap: round !important;
+}
+
+/* Ensure the outer/alt line (if present) is rendered behind the main line */
+.leaflet-overlay-pane polyline.leaflet-routing-alt-line {
+    stroke: rgba(0,0,0,0.18) !important;
+    stroke-width: 10 !important;
+}
+
+/* Stronger fallbacks: force any routing/overlay paths to be visible on top of tiles.
+   This targets path/polyline elements inside the map and applies a clear green stroke
+   and ensures the overlay pane is above tiles. These rules use !important intentionally
+   to counteract broad theme overrides applied elsewhere. */
+#map .leaflet-overlay-pane,
+.leaflet-overlay-pane {
+    z-index: 650 !important;
+}
+
+#map .leaflet-overlay-pane path,
+#map .leaflet-overlay-pane polyline,
+#map .leaflet-overlay-pane svg path,
+#map .leaflet-overlay-pane svg polyline,
+.leaflet-overlay-pane path,
+.leaflet-overlay-pane polyline {
+    fill: none !important;
+    stroke: #388E3C !important;
+    stroke-width: 6 !important;
+    stroke-linejoin: round !important;
+    stroke-linecap: round !important;
+    vector-effect: non-scaling-stroke !important;
+}
+
+/* Also ensure lines generated by the routing machine (class names) are visible */
+.leaflet-routing-line,
+.leaflet-routing-alt-line,
+.leaflet-routing-container svg .leaflet-routing-line,
+.leaflet-routing-container svg .leaflet-routing-alt-line {
+    stroke: inherit !important;
+}
+
+/* Ensure Tourist Arrivals and Total Visitors text is white */
+.stats-box .text-container > h2,
+.text-container h2.section-heading,
+.total-visitors h3,
+.total-visitors p {
+    color: #FFFFFF !important;
+}
+
+/* Weather headings and key text */
+.weather-container h2,
+.weather-card h3,
+.weather-card .temperature,
+.weather-card .precipitation {
+    color: #FFFFFF !important;
 }
